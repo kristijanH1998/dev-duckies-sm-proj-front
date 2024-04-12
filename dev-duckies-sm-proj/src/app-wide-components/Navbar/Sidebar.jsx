@@ -2,46 +2,46 @@ import { NavLink } from 'react-router-dom'
 
 export default function Sidebar() {
   return (
-    <section className="section">
-      <aside className="menu" id='sidebar'>
+    <div className="cell is-hidden-mobile">
+      <nav id='sidebar'>
 
-        <NavLink to="/" className="sidebar-item">
-          <span className="icon-text">
-            <span className="icon">
-              <i className="fa-solid fa-house"></i>
+        <NavLink to="/" className='sidebar-item'>
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fa-solid fa-house"></i>
             </span>
             <span>Home</span>
           </span>
         </NavLink>
 
-        <NavLink to="search" className="sidebar-item">
-          <span className="icon-text">
-            <span className="icon">
-              <i className="fa-solid fa-magnifying-glass"></i>
+        <NavLink to="search" className='sidebar-item'>
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
             </span>
             <span>Search</span>
           </span>
         </NavLink>
 
-        <NavLink to="post" className="sidebar-item">
-          <span className="icon-text">
-            <span className="icon">
-              <i className="fa-regular fa-square-plus"></i>
+        <NavLink to="post" className='sidebar-item'>
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fa-solid fa-square-plus"></i>
             </span>
             <span>Post</span>
           </span>
         </NavLink>
 
-        <NavLink to="profile" className="sidebar-item">
-          <span className="icon-text">
-            <span className="icon">
-              <i className="fa-regular fa-user"></i>
+        <NavLink to="profile" className='sidebar-item'>
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fa-solid fa-user"></i>
             </span>
             <span>Profile</span>
           </span>
         </NavLink>
 
-      </aside>
-    </section>
+      </nav>
+    </div>
   )
 }

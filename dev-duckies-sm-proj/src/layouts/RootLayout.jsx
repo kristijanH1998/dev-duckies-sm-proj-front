@@ -4,22 +4,14 @@ import MobileNavbar from '../app-wide-components/Navbar/MobileNavbar'
 
 export default function RootLayout() {
   return (
-    <>
-      <div className="grid">
+    <div className="grid">
+      <Sidebar />
 
-        <div className="cell is-hidden-mobile">
-          <Sidebar />
-        </div>
-
-        <div className="cell is-col-span-3">
-          <main>
-            <Outlet />
-          </main>
-        </div>
-        
-        <MobileNavbar />
-
+      <div className="cell is-col-span-3" id="outlet">
+        <Outlet />
       </div>
-    </>
+
+      <MobileNavbar />
+    </div>
   )
 }

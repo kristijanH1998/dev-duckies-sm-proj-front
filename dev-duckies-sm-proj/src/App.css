@@ -1,46 +1,62 @@
-/* side bar (desktop) */
-#sidebar,
-.sidebar-item {
+/* sidebar (desktop & tablet) */
+#sidebar {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  row-gap: 10px;
-}
-
-.icon-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   align-content: center;
+  float: right;
+
+  row-gap: 10px;
+  margin-top: 40px;
 }
 
 .sidebar-item {
-  flex-direction: row;
+  padding: 15px 25px;
   border-radius: 20px;
-  padding: 10px 25px;
+}
+
+.icon {
+  position: relative;
+  top: 1px;
+}
+
+span i {
+  margin-right: 10px;
+}
+
+a span {
+  font-size: 1.4rem;
+  text-transform: uppercase;
 }
 
 #sidebar a.active {
   color: white;
-  font-weight: bold;
   background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-
 }
 
 #sidebar .sidebar-item:hover {
   background-color: rgba(255, 255, 255, 0.10);
-  border-radius: 20px;
 }
 
+
 /* navbar (mobile) */
+.navbar {
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.navbar-brand, .navbar-brand a {
+  border-radius: 10px;
+}
 
 .navbar-brand {
   background-color: rgb(65, 65, 65);
 }
 
+a p {
+  text-transform: uppercase;
+}
+
 .navbar-brand a.active {
-  font-weight: bold;
   background-color: rgba(255, 255, 255, 0.15);
 }
 

@@ -26,7 +26,7 @@ export default function MobileNavbar() {
             to='post'
             className='navbar-item is-expanded is-block has-text-centered'
           >
-            <i className="fa-regular fa-square-plus"></i>
+            <i className="fa-solid fa-square-plus"></i>
             <p className='is-size-7'>Post</p>
           </NavLink>
 
@@ -34,7 +34,7 @@ export default function MobileNavbar() {
             to='profile'
             className='navbar-item is-expanded is-block has-text-centered'
           >
-            <i className="fa-regular fa-user"></i>
+            <i className="fa-solid fa-user"></i>
             <p className='is-size-7'>Profile</p>
           </NavLink>
 
