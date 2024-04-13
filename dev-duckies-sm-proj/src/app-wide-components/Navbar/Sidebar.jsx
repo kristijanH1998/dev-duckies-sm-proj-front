@@ -3,41 +3,49 @@ import { NavLink } from 'react-router-dom'
 export default function Sidebar() {
   return (
     <div className="cell is-hidden-mobile">
-      <nav id='sidebar'>
+      <nav id='sidebar' className='navbar'>
 
         <NavLink to="/" className='sidebar-item'>
-          <span class="icon-text">
-            <span class="icon">
-              <i class="fa-solid fa-house"></i>
+          <span className="icon-text">
+            <span className="icon">
+              <span className="material-symbols-rounded">
+                home
+              </span>
             </span>
-            <span>Home</span>
+            <span>Feed</span>
           </span>
         </NavLink>
 
         <NavLink to="search" className='sidebar-item'>
-          <span class="icon-text">
-            <span class="icon">
-              <i class="fa-solid fa-magnifying-glass"></i>
+          <span className="icon-text">
+            <span className="icon">
+              <span className="material-symbols-rounded">
+                search
+              </span>
             </span>
             <span>Search</span>
           </span>
         </NavLink>
 
-        <NavLink to="post" className='sidebar-item'>
-          <span class="icon-text">
-            <span class="icon">
-              <i class="fa-solid fa-square-plus"></i>
+        <NavLink to="profile" className='sidebar-item'>
+          <span className="icon-text">
+            <span className="icon">
+              <span className="material-symbols-rounded">
+                person
+              </span>
             </span>
-            <span>Post</span>
+            <span>Profile</span>
           </span>
         </NavLink>
 
-        <NavLink to="profile" className='sidebar-item'>
-          <span class="icon-text">
-            <span class="icon">
-              <i class="fa-solid fa-user"></i>
+        <NavLink to="post" className='sidebar-item'>
+          <span className="icon-text">
+            <span className="icon">
+              <span className="material-symbols-rounded">
+                add_box
+              </span>
             </span>
-            <span>Profile</span>
+            <span>Post</span>
           </span>
         </NavLink>
 

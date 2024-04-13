@@ -1,10 +1,10 @@
 export default function PublicFeed() {
   return (
     <section className="section">
-      <div className="container">
-        <h1 className="title">Hello Feed</h1>
-        <p className="subtitle">My homepage with <strong>Bulma</strong></p>
-      </div>
+      <h1 className="title">Feed</h1>
+      <h2 className="subtitle">
+        A home/feed/explore page for all posts by all users.
+      </h2>
     </section>
   )
 }

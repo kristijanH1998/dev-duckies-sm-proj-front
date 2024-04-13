@@ -1,0 +1,67 @@
+/* google icons  */
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+/* sidebar (desktop & tablet) */
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  float: right;
+
+  row-gap: 10px;
+  margin-top: 40px;
+}
+
+.sidebar-item {
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+a span, .icon i {
+  font-size: 1.3rem;
+  color: white;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+#sidebar a.active {
+  background-color: hsl(220, 13%, 19%);
+}
+
+#sidebar .sidebar-item:hover {
+  background-color: hsl(220, 15%, 24%);
+}
+
+
+/* navbar (mobile) */
+.navbar-brand {
+  background-color: hsl(220, 15%, 14%);
+}
+
+.navbar-item {
+  padding-top: 10px;
+}
+
+.navbar-brand a span {
+  color: hsl(220, 15%, 69%);
+  font-size: 2rem;
+}
+
+.navbar-brand a.active span {
+  color: white;
+}
+
+.navbar-brand a.active {
+  background-color: hsl(220, 13%, 19%);
+}
+
+.navbar-brand .navbar-item:hover {
+  background-color: hsl(220, 15%, 24%);
+}
