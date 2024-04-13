@@ -9,7 +9,7 @@ import '../Navbar.css'
 // pages
 import PageNotFound from '../PageNotFound'
 import PublicFeed from '../../../pages/public-feed/public-feed'
-import Search from '../../../pages/search/search'
+import Search from '../../../pages/search/Search'
 import CreatePost from '../../create-post'
 import ProfilePage from "../../../pages/profile-page/profile-page"
 
