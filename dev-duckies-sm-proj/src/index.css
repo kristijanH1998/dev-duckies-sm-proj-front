@@ -10,4 +10,21 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --background-color: white;
+  --foreground-color: blue;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+  --toggle-bg: gray;
+  --toggle-fg: white;
+  --primary-icon-color: white;
+}
+
+[data-theme="dark"] {
+  --background-color: #14161a;
+  --foreground-color: hsl(240, 80%, 60%);
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --toggle-bg: white;
+  --toggle-fg: gray;
 }

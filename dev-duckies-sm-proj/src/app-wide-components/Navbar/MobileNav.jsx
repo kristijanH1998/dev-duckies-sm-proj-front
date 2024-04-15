@@ -36,6 +36,13 @@ export default function MobileNavbar() {
           {/* <p className='is-size-7'>Profile</p> */}
         </NavLink>
 
+        <NavLink to='settings' className='navbar-item is-expanded is-block has-text-centered'>
+          <span className="material-symbols-rounded">
+            settings
+          </span>
+          {/* <p className='is-size-7'>Profile</p> */}
+        </NavLink>
+
       </div>
     </nav>
   )
