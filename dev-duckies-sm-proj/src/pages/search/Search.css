@@ -1,0 +1,10 @@
+.user-list {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card {
+  cursor: pointer;
+  width: 100vw;
+}
