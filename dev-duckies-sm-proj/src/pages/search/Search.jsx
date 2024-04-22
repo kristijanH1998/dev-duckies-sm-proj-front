@@ -10,10 +10,10 @@ export default function Search() {
         Search for users by @username
       </h2>
       
-      <div class="field">
-        <p class="control has-icons-left">
-          <input class="input" type="text" placeholder="@Username" />
-          <span class="icon is-small is-left">
+      <div className="field">
+        <p className="control has-icons-left">
+          <input className="input" type="text" placeholder="@Username" />
+          <span className="icon is-small is-left">
             <i className='material-symbols-rounded'>search</i>
           </span>
         </p>
