@@ -18,6 +18,8 @@
   --toggle-bg: gray;
   --toggle-fg: white;
   --primary-icon-color: white;
+  --sidebar-selected: hsla(0, 0%, 25%, 0.25);
+  --sidebar-select-hover: hsla(0, 0%, 25%, 0.20);
 }
 
 [data-theme="dark"] {
@@ -27,4 +29,6 @@
   --secondary-text-color: black;
   --toggle-bg: white;
   --toggle-fg: gray;
+  --sidebar-selected: hsla(0, 0%, 25%, 0.75);
+  --sidebar-select-hover: hsla(0, 0%, 25%, 0.55);
 }

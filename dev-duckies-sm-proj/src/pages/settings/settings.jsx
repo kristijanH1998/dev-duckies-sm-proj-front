@@ -1,4 +1,5 @@
 import ToggleTheme from "../../app-wide-components/Themes/ToggleTheme";
+import './settings.css'
 
 export default function Settings() {
   return (
@@ -7,7 +8,14 @@ export default function Settings() {
       <h2 className="subtitle">
         A settings page for users to change themes and logout.
       </h2>
-      <ToggleTheme />
+      <div className="settings-list">
+        <div className="settings-item">
+          <ToggleTheme />
+        </div>
+        <div className="settings-item">
+          <button className="button is-fullwidth is-danger is-rounded is-fullscreen is-dark">Sign Out</button>
+        </div>
+      </div>
     </section>
   )
 }

@@ -9,13 +9,15 @@ export default function Search() {
       <h2 className="subtitle">
         Search for users by @username
       </h2>
-      
-      <div className="field">
-        <p className="control has-icons-left">
-          <input className="input" type="text" placeholder="@Username" />
-          <span className="icon is-small is-left">
-            <i className='material-symbols-rounded'>search</i>
-          </span>
+
+      <div className="field is-grouped">
+        <p className="control is-expanded">
+          <input className="input" type="text" id='username' name='username' placeholder="@username" required autoComplete="off" />
+        </p>
+        <p className="control" id='search-btn'>
+          <button className="button is-info" type='submit'>
+            Search
+          </button>
         </p>
       </div>
 
