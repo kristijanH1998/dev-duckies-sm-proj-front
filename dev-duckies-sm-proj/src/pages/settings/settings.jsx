@@ -13,7 +13,7 @@ export default function Settings() {
           <ToggleTheme />
         </div>
         <div className="settings-item">
-          <button className="button is-fullwidth is-danger is-rounded is-fullscreen is-dark">Sign Out</button>
+          <button className="button is-danger is-rounded is-fullscreen is-dark">Sign Out</button>
         </div>
       </div>
     </section>
