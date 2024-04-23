@@ -1,10 +1,18 @@
-.user-list {
-  background-color: var(--background-color);
-  padding: 20px;
-  border-radius: 10px;
-}
-
 .card {
   cursor: pointer;
-  width: 100vw;
+}
+
+#search-btn {
+  bottom: 80px;
+}
+
+.user-list {
+  margin-top: -65px;
+}
+
+input::placeholder {
+  position: absolute;
+  left: 10px; /* Adjust left position */
+  top: 17px; /* Vertically center */
+  transform: translateY(-50%); /* Vertically center */
 }

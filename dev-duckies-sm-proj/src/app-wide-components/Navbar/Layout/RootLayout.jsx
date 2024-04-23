@@ -2,7 +2,6 @@ import { useLocalStorage } from "@uidotdev/usehooks"
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../Sidebar'
 import MobileNavbar from '../MobileNav'
-// import '../../../App.css'
 
 export default function RootLayout() {
   const preference = window.matchMedia("(prefers-color-scheme: dark)").matches

@@ -19,14 +19,23 @@
   display: flex;
   flex-direction: column;
   float: right;
-  row-gap: 10px;
-  margin-top: 40px;
+  row-gap: 5px;
   background-color: var(--background-color);
   transition: background-color 0.25s ease-in-out;
+  border-right: 1px solid hsla(0, 0%, 25%, 0.45);
+  height: 100vh;
+}
+#sidebar #navbar-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#sidebar a {
+  margin-right: 20px;
 }
 
 .sidebar-item {
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-radius: 15px;
 }
 
@@ -36,16 +45,12 @@ a span, .icon i {
   transition: background-color 0.25s ease-in-out;
 }
 
-.icon {
-  margin-right: 10px;
-}
-
 #sidebar a.active {
-  background-color: hsla(0, 0%, 25%, 0.45);
+  background-color: var(--sidebar-selected);
 }
 
 #sidebar .sidebar-item:hover {
-  background-color: hsla(0, 0%, 25%, 0.30);
+  background-color: var(--sidebar-select-hover);
 }
 
 
@@ -53,6 +58,7 @@ a span, .icon i {
 .navbar-brand {
   background-color: var(--background-color);
   transition: background-color 0.25s ease-in-out;
+  border-top: 1px solid hsla(0, 0%, 25%, 0.25);
 }
 
 .navbar-item {
@@ -71,9 +77,9 @@ a span, .icon i {
 }
 
 .navbar-brand a.active {
-  background-color: hsla(0, 0%, 25%, 0.45);
+  background-color: var(--sidebar-selected);
 }
 
 .navbar-brand .navbar-item:hover {
-  background-color: hsla(0, 0%, 25%, 0.30);
+  background-color: var(--sidebar-select-hover);
 }
