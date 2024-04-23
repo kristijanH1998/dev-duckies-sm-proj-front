@@ -22,7 +22,7 @@ import RootLayout from '../Layout/RootLayout'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <>
       <Route path="/" element={<RootLayout />}>
         <Route index element={<PublicFeed />} />
         <Route path="search" element={<Search />} />
@@ -35,7 +35,7 @@ const router = createBrowserRouter(
 
       <Route path="register" element={<Register />} />
       <Route path="login" element={<LoginPage />} />
-    </Route>
+    </>
   )
 )
 
