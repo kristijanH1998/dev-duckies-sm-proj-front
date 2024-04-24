@@ -1,10 +1,45 @@
-export default function CreatePost() {
+export default function CreatePost(){
   return (
-    <section className="section">
-      <h1 className="title">Post</h1>
-      <h2 className="subtitle">
-        Users can type text here to post that will show on their profile page and feed page.
-      </h2>
-    </section>
-  )
+
+
+      <>
+        <div className = "card m-6">
+          {/*Bellow is navbar that will also contain user pic and name*/}
+            <div className="card">
+             
+                
+                <header className="card-header is-flex-direction-row is-align-items-center p-4">
+                 
+                  <figure className= "image is-48x48 is-square mr-5 ml-3">
+                      <img className= "is-rounded" src = "https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2011/05/ryan_gosling.jpg"></img>
+                    </figure>
+                      <p>Ryan-gooseling-445</p>
+                 
+                  </header>
+                
+             </div>
+               {/*Bellow is text form in order to write and submit post*/}
+              <form className="text-form">
+
+
+             
+                <textarea className= "textarea is-primary  is medium" type="text" placeholder = "Share your thoughts..."></textarea>
+               
+              </form>
+               
+                <button className="button is-primary">Share</button>
+              {/*May be rethink the footer. Need an exit out button*/}
+              {/*This is the footer at the bottom of my card
+                <div className="card">
+          <footer className="card-footer">
+            <a href="#" className="card-footer-item">Save</a>
+            <a href="#" className="card-footer-item">Edit</a>
+            <a href="#" className="card-footer-item">Delete</a>
+          </footer>
+        </div>*/}
+            </div>
+ 
+       
+      </>
+    )
 }
