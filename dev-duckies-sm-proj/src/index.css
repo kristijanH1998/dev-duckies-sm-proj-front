@@ -17,9 +17,12 @@
   --secondary-text-color: white;
   --toggle-bg: gray;
   --toggle-fg: white;
+  --background-color-list: hsla(0, 0%, 50%, 0.75);
   --primary-icon-color: white;
   --sidebar-selected: hsla(0, 0%, 25%, 0.25);
   --sidebar-select-hover: hsla(0, 0%, 25%, 0.20);
+  --scrollbar-thumb: hsla(0, 0%, 25%, 0.75);
+  --scrollbar-thumb-hover: hsla(0, 0%, 25%, 0.6);
 }
 
 [data-theme="dark"] {
@@ -29,6 +32,9 @@
   --secondary-text-color: black;
   --toggle-bg: white;
   --toggle-fg: gray;
+  --background-color-list: hsla(0, 0%, 25%, 0.65);
   --sidebar-selected: hsla(0, 0%, 25%, 0.75);
   --sidebar-select-hover: hsla(0, 0%, 25%, 0.55);
+  --scrollbar-thumb: hsla(0, 0%, 50%, 0.65);
+  --scrollbar-thumb-hover: hsla(0, 0%, 50%, 0.5);
 }

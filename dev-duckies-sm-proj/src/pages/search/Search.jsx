@@ -25,6 +25,16 @@ export default function Search() {
         <SearchUserCard />
         <SearchUserCard />
         <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
+        <SearchUserCard />
       </div>
 
     </section>
