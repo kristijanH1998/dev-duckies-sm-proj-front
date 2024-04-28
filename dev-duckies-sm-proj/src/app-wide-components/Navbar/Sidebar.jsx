@@ -30,6 +30,17 @@ export default function Sidebar() {
           </span>
         </NavLink>
 
+        <NavLink to="post" className='sidebar-item'>
+          <span className="icon-text">
+            <span className="icon">
+              <span className="material-symbols-rounded">
+                add_box
+              </span>
+            </span>
+            <span>Post</span>
+          </span>
+        </NavLink>
+
         <NavLink to="profile" className='sidebar-item'>
           <span className="icon-text">
             <span className="icon">
@@ -49,17 +60,6 @@ export default function Sidebar() {
               </span>
             </span>
             <span>Settings</span>
-          </span>
-        </NavLink>
-
-        <NavLink to="post" className='sidebar-item'>
-          <span className="icon-text">
-            <span className="icon">
-              <span className="material-symbols-rounded">
-                add_box
-              </span>
-            </span>
-            <span>Post</span>
           </span>
         </NavLink>
 

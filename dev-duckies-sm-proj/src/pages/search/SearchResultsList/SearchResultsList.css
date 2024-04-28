@@ -1,0 +1,35 @@
+.results-list {
+  width: 100%;
+  background-color: var(--search-result-list-bg-color);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  color: var(--primary-text-color);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-scrollbar-thumb);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}

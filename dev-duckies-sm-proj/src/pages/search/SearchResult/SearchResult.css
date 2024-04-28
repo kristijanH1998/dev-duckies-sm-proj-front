@@ -1,0 +1,19 @@
+.search-result {
+  padding: 5px 15px;
+  margin: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: var(--search-result-bg-color);
+}
+
+.search-result:first-child {
+  margin-top: 15px;
+}
+
+.search-result:last-child {
+  margin-bottom: 15px;
+}
+
+.search-result:hover {
+  background-color: var(--search-result-hover-bg-color);
+}
