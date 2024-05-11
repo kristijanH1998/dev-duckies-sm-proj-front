@@ -25,32 +25,39 @@
   border-right: 1px solid hsla(0, 0%, 25%, 0.45);
   height: 100vh;
 }
+
 #sidebar #navbar-title {
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 #sidebar a {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .sidebar-item {
-  padding: 15px 20px;
+  padding: 0.9rem 0.8rem;
   border-radius: 15px;
+}
+
+.icon {
+  margin-right: 5px;
 }
 
 a span, .icon i {
   font-size: 1.3rem;
-  color: var(--primary-text-color);
-  transition: background-color 0.25s ease-in-out;
+  color: var(--primary-icon-color);
+  transition: primary-icon-color 0.25s ease-in-out;
 }
 
 #sidebar a.active {
   background-color: var(--sidebar-selected);
+  transition: sidebar-selected 0.25s ease-in-out;
 }
 
 #sidebar .sidebar-item:hover {
   background-color: var(--sidebar-select-hover);
+  transition: sidebar-select-hover 0.25s ease-in-out;
 }
 
 
@@ -68,18 +75,20 @@ a span, .icon i {
 .navbar-brand a span {
   color: var(--primary-text-color);
   font-size: 2rem;
-  transition: background-color 0.25s ease-in-out;
+  transition: primary-text-color 0.25s ease-in-out;
 }
 
 .navbar-brand a.active span {
   color: var(--primary-text-color);
-  transition: background-color 0.25s ease-in-out;
+  transition: primary-text-color 0.25s ease-in-out;
 }
 
 .navbar-brand a.active {
   background-color: var(--sidebar-selected);
+  transition: sidebar-selected 0.25s ease-in-out;
 }
 
 .navbar-brand .navbar-item:hover {
   background-color: var(--sidebar-select-hover);
+  transition: sidebar-select-hover 0.25s ease-in-out;
 }
