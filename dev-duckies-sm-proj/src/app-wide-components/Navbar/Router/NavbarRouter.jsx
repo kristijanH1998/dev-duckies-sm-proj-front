@@ -16,6 +16,7 @@ import ProfilePage from '../../../pages/profile-page/profile-page'
 import Settings from '../../../pages/settings/settings'
 import Register from "../../../pages/register-page/register"
 import LoginPage from "../../../pages/login/login-page"
+import ForgotPassword from "../../../pages/forgot-password/forgot-password"
 
 // layouts
 import RootLayout from '../Layout/RootLayout'
@@ -29,10 +30,9 @@ const router = createBrowserRouter(
         <Route path="post" element={<CreatePost />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="settings" element={<Settings />} />
-
         <Route path="*" element={<PageNotFound />} />
       </Route>
-
+      <Route path="forgotpw" element={<ForgotPassword />} />
       <Route path="register" element={<Register />} />
       <Route path="login" element={<LoginPage />} />
     </>
