@@ -73,7 +73,7 @@ export default function ForgotPassword() {
                       <label className="label">Email</label>
                       <div className="control has-icons-left">
                         <input
-                          className={`input ${emailTest ? '' : 'is-danger'}`}
+                          className="input"
                           type="email"
                           placeholder="Email Address"
                           value={email}
