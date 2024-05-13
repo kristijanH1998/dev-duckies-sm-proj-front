@@ -79,9 +79,6 @@ export default function ForgotPassword() {
                           value={email}
                           onChange={handleChange(setEmail)}
                         />
-                        <span className="icon is-small is-left">
-                          <i className="fas fa-envelope"></i>
-                        </span>
                       </div>
                     </div>
 
