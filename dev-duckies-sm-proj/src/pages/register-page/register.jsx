@@ -44,7 +44,7 @@ export default function Register() {
                     <label className="label">Email</label>
                     <div className="control has-icons-left">
                       <input
-                        className={`input ${emailTest ? '' : 'is-danger'}`}
+                        className="input"
                         type="text"
                         placeholder="Email Address"
                         value={email}
