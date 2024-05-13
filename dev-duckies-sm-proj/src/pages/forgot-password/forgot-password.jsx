@@ -74,7 +74,7 @@ export default function ForgotPassword() {
                       <div className="control has-icons-left">
                         <input
                           className={`input ${emailTest ? '' : 'is-danger'}`}
-                          type="text"
+                          type="email"
                           placeholder="Email Address"
                           value={email}
                           onChange={handleChange(setEmail)}
