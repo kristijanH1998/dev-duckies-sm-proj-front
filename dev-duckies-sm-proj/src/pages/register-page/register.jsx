@@ -90,9 +90,6 @@ export default function Register() {
                         value={confirmPassword}
                         onChange={handleChange(setConfirmPassword)}
                       />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-lock"></i>
-                      </span>
                     </div>
                   </div>
                   <div className="field">
