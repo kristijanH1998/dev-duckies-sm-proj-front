@@ -50,9 +50,6 @@ export default function Register() {
                         value={email}
                         onChange={handleChange(setEmail)}
                       />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-envelope"></i>
-                      </span>
                     </div>
                   </div>
                   <div className="field">
