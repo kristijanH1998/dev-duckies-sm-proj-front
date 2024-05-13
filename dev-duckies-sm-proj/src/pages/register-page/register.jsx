@@ -78,9 +78,6 @@ export default function Register() {
                         value={password}
                         onChange={handleChange(setPassword)}
                       />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-lock"></i>
-                      </span>
                     </div>
                   </div>
                   <div className="field">
