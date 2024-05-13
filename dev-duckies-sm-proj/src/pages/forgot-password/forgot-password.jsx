@@ -104,9 +104,6 @@ export default function ForgotPassword() {
                           value={code}
                           onChange={handleChange(setCode)}
                         />
-                        <span className="icon is-small is-left">
-                          <i className="fas fa-lock"></i>
-                        </span>
                       </div>
                     </div>
                     <div className="field">
