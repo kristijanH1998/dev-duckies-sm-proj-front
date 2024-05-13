@@ -10,7 +10,6 @@ export default function ForgotPassword() {
   const [message, setMessage] = useState(''); // Message to display
 
   // Checks if the email is valid
-  const emailTest = /\S+@\S+\.\S+/.test(email);
 
   // Checks if the passwords match
   const passwordTest = newPassword === confirmPassword;
