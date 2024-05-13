@@ -63,9 +63,6 @@ export default function Register() {
                         onChange={handleChange(setUsername)}
                         maxLength={12}
                       />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-user"></i>
-                      </span>
                     </div>
                   </div>
                   <div className="field">
