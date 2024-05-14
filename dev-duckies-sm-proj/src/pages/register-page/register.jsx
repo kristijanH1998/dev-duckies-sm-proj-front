@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -24,12 +25,29 @@ export default function Register() {
   // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (passwordTest && emailTest && usernameTest) {
-      console.log('Registered!');
-    } else {
-      console.log('Passwords do not match, email is invalid, or username is too long');
-    }
+    axios
+      .post("http://localhost:8080/auth/register", {
+        username,
+        email,
+        password,
+        first_name: "Victor",
+        last_name: "lomeli",
+        date_of_birth: new Date("December 17, 1995 03:24:00"),
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+  //   if (passwordTest && emailTest && usernameTest) {
+  //     console.log('Registered!');
+  //   } else {
+  //     console.log('Passwords do not match, email is invalid, or username is too long');
+  //   }
+  // };
+
 
   return (
     <div className="hero is-fullheight">
