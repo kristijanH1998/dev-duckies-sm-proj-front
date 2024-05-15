@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 export default function Register() {
@@ -14,6 +15,7 @@ export default function Register() {
   const [birthMonth, setBirthMonth] = useState('');
   const [birthDay, setBirthDay] = useState('');
   const [birthYear, setBirthYear] = useState('');
+  const navigate = useNavigate();
   
   
   // Checks if the username is less than 12 characters
@@ -21,6 +23,8 @@ export default function Register() {
   
   // Checks if the passwords match
   const passwordTest = password === confirmPassword;
+
+  const emailTest = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z+])?$/.test(email); 
   
   // Handles input changes and saves it to state
   const handleChange = (setState) => (event) => {
@@ -30,28 +34,28 @@ export default function Register() {
   // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!(passwordTest && emailTest && usernameTest)) {
+      console.log(passwordTest, emailTest, usernameTest)
+      return console.log("Unable to Register!");
+    }
     axios
-    .post("http://localhost:8080/auth/register", {
-      username,
-      email,
-      password,
-      first_name: firstName,
+      .post("http://localhost:8080/auth/register", {
+        username,
+        email,
+        password,
+        first_name: firstName,
         last_name: lastName,
-        date_of_birth: new Date(`${birthMonth}/${birthDay}/${birthYear}`),
+        date_of_birth: new Date(`${birthMonth - 1}/${birthDay}/${birthYear}`),
       })
       .then((res) => {
-        console.log(res);
+        navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data.error);
       });
-    };
-    //   if (passwordTest && emailTest && usernameTest) {
-      //     console.log('Registered!');
-      //   } else {
-        //     console.log('Passwords do not match, email is invalid, or username is too long');
-        //   }
-        // };
+  };
+      
+
   const myStyles = {
     overflowY: 'scroll'
   }
@@ -182,7 +186,7 @@ export default function Register() {
                   </div>
                   <div className="field">
                     <div className="control">
-                      <Link to='/' className="button is-primary is-fullwidth m-0">Create Account</Link>
+                      <button className="button is-primary is-fullwidth m-0">Create Account</button>
                       <Link to="/LogIn" className="button is-primary is-fullwidth is-outlined mt-5">
                         Return to Login
                       </Link>
