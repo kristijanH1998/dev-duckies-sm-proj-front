@@ -14,28 +14,28 @@ export default function Register() {
   const [birthMonth, setBirthMonth] = useState('');
   const [birthDay, setBirthDay] = useState('');
   const [birthYear, setBirthYear] = useState('');
-
-
- // Checks if the username is less than 12 characters
+  
+  
+  // Checks if the username is less than 12 characters
   const usernameTest = username.length <= 12;
-
+  
   // Checks if the passwords match
   const passwordTest = password === confirmPassword;
-
+  
   // Handles input changes and saves it to state
   const handleChange = (setState) => (event) => {
     setState(event.target.value);
   };
-
+  
   // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/auth/register", {
-        username,
-        email,
-        password,
-        first_name: firstName,
+    .post("http://localhost:8080/auth/register", {
+      username,
+      email,
+      password,
+      first_name: firstName,
         last_name: lastName,
         date_of_birth: new Date(`${birthMonth}/${birthDay}/${birthYear}`),
       })
@@ -45,17 +45,20 @@ export default function Register() {
       .catch((error) => {
         console.log(error);
       });
-  };
-  //   if (passwordTest && emailTest && usernameTest) {
-  //     console.log('Registered!');
-  //   } else {
-  //     console.log('Passwords do not match, email is invalid, or username is too long');
-  //   }
-  // };
-
-
+    };
+    //   if (passwordTest && emailTest && usernameTest) {
+      //     console.log('Registered!');
+      //   } else {
+        //     console.log('Passwords do not match, email is invalid, or username is too long');
+        //   }
+        // };
+  const myStyles = {
+    overflowY: 'scroll'
+  }
+        
+        
   return (
-    <div className="hero is-fullheight">
+    <div className="hero is-fullheight" style={{backgroundColor: '#14161A', height: '100vh', overflowY: 'auto' }}>
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
@@ -90,72 +93,69 @@ export default function Register() {
                   </div>
 
                   <div className="field">
-  <label className="label">First Name</label>
-  <div className="control has-icons-left">
-    <input
-      className="input"
-      type="text"
-      placeholder="First Name"
-      value={firstName}
-      onChange={handleChange(setFirstName)}
-    />
-  </div>
-</div>
-<div className="field">
-  <label className="label">Last Name</label>
-  <div className="control has-icons-left">
-    <input
-      className="input"
-      type="text"
-      placeholder="Last Name"
-      value={lastName}
-      onChange={handleChange(setLastName)}
-    />
-  </div>
-</div>
-
-
-<div className="field">
-  <label className="label">Date of Birth</label>
-  <div className="control has-icons-left">
-    <div className="field has-addons">
-      <div className="control">
-        <input
-          className="input"
-          type="number"
-          placeholder="MM"
-          value={birthMonth}
-          onChange={handleChange(setBirthMonth)}
-          min="1"
-          max="12"
-        />
-      </div>
-      <div className="control">
-        <input
-          className="input"
-          type="number"
-          placeholder="DD"
-          value={birthDay}
-          onChange={handleChange(setBirthDay)}
-          min="1"
-          max="31"
-        />
-      </div>
-      <div className="control">
-        <input
-          className="input"
-          type="number"
-          placeholder="YYYY"
-          value={birthYear}
-          onChange={handleChange(setBirthYear)}
-          min="1900"
-          max="2023"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-
+                    <label className="label">First Name</label>
+                    <div className="control has-icons-left">
+                      <input
+                        className="input"
+                        type="text"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={handleChange(setFirstName)}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Last Name</label>
+                    <div className="control has-icons-left">
+                      <input
+                        className="input"
+                        type="text"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={handleChange(setLastName)}
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">Date of Birth</label>
+                    <div className="control has-icons-left">
+                      <div className="field has-addons">
+                        <div className="control">
+                          <input
+                            className="input"
+                            type="number"
+                            placeholder="MM"
+                            value={birthMonth}
+                            onChange={handleChange(setBirthMonth)}
+                            min="1"
+                            max="12"
+                          />
+                        </div>
+                        <div className="control">
+                          <input
+                            className="input"
+                            type="number"
+                            placeholder="DD"
+                            value={birthDay}
+                            onChange={handleChange(setBirthDay)}
+                            min="1"
+                            max="31"
+                          />
+                        </div>
+                        <div className="control">
+                          <input
+                            className="input"
+                            type="number"
+                            placeholder="YYYY"
+                            value={birthYear}
+                            onChange={handleChange(setBirthYear)}
+                            min="1900"
+                            max="2023"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="field">
                     <label className="label">Password</label>
                     <div className="control has-icons-left">
@@ -182,10 +182,10 @@ export default function Register() {
                   </div>
                   <div className="field">
                     <div className="control">
-                      <Link to='/' className="button is-primary is-fullwidth">Create Account</Link>
-                      <Link to="/LogIn" className="button is-primary is-fullwidth is-outlined">
-              Return to Login
-              </Link>
+                      <Link to='/' className="button is-primary is-fullwidth m-0">Create Account</Link>
+                      <Link to="/LogIn" className="button is-primary is-fullwidth is-outlined mt-5">
+                        Return to Login
+                      </Link>
                     </div>
                   </div>
                 </form>
