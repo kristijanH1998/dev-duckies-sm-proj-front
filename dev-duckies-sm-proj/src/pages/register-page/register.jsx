@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 export default function Register() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [birthMonth, setBirthMonth] = useState('');
+  const [birthDay, setBirthDay] = useState('');
+  const [birthYear, setBirthYear] = useState('');
 
-  // Checks if the email is valid
-  const emailTest = /\S+@\S+\.\S+/.test(email);
 
-  // Checks if the username is less than 12 characters
+ // Checks if the username is less than 12 characters
   const usernameTest = username.length <= 12;
 
   // Checks if the passwords match
@@ -30,9 +35,9 @@ export default function Register() {
         username,
         email,
         password,
-        first_name: "Victor",
-        last_name: "lomeli",
-        date_of_birth: new Date("December 17, 1995 03:24:00"),
+        first_name: firstName,
+        last_name: lastName,
+        date_of_birth: new Date(`${birthMonth}/${birthDay}/${birthYear}`),
       })
       .then((res) => {
         console.log(res);
@@ -83,6 +88,74 @@ export default function Register() {
                       />
                     </div>
                   </div>
+
+                  <div className="field">
+  <label className="label">First Name</label>
+  <div className="control has-icons-left">
+    <input
+      className="input"
+      type="text"
+      placeholder="First Name"
+      value={firstName}
+      onChange={handleChange(setFirstName)}
+    />
+  </div>
+</div>
+<div className="field">
+  <label className="label">Last Name</label>
+  <div className="control has-icons-left">
+    <input
+      className="input"
+      type="text"
+      placeholder="Last Name"
+      value={lastName}
+      onChange={handleChange(setLastName)}
+    />
+  </div>
+</div>
+
+
+<div className="field">
+  <label className="label">Date of Birth</label>
+  <div className="control has-icons-left">
+    <div className="field has-addons">
+      <div className="control">
+        <input
+          className="input"
+          type="number"
+          placeholder="MM"
+          value={birthMonth}
+          onChange={handleChange(setBirthMonth)}
+          min="1"
+          max="12"
+        />
+      </div>
+      <div className="control">
+        <input
+          className="input"
+          type="number"
+          placeholder="DD"
+          value={birthDay}
+          onChange={handleChange(setBirthDay)}
+          min="1"
+          max="31"
+        />
+      </div>
+      <div className="control">
+        <input
+          className="input"
+          type="number"
+          placeholder="YYYY"
+          value={birthYear}
+          onChange={handleChange(setBirthYear)}
+          min="1900"
+          max="2023"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
                   <div className="field">
                     <label className="label">Password</label>
                     <div className="control has-icons-left">
@@ -109,9 +182,7 @@ export default function Register() {
                   </div>
                   <div className="field">
                     <div className="control">
-                      <button className="button is-primary is-fullwidth" type="submit">
-                        Create Account
-                      </button>
+                      <Link to='/' className="button is-primary is-fullwidth">Create Account</Link>
                       <Link to="/LogIn" className="button is-primary is-fullwidth is-outlined">
               Return to Login
               </Link>
