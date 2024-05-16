@@ -25,6 +25,10 @@ export default function Register() {
   const passwordTest = password === confirmPassword;
 
   const emailTest = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z+])?$/.test(email); 
+
+  const birthMonthTest = birthMonth >= 1 && birthMonth <= 12;
+  const birthDayTest = birthDay >= 1 && birthDay <= 31;
+  const birthYearTest = birthYear >= 1900 && birthYear <= 2023;
   
   // Handles input changes and saves it to state
   const handleChange = (setState) => (event) => {
@@ -34,8 +38,24 @@ export default function Register() {
   // Handles form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!(passwordTest && emailTest && usernameTest)) {
-      console.log(passwordTest, emailTest, usernameTest)
+    if (
+      !(
+        passwordTest &&
+        emailTest &&
+        usernameTest &&
+        birthMonthTest &&
+        birthDayTest &&
+        birthYearTest
+      )
+    ) {
+      console.log(
+        passwordTest,
+        emailTest,
+        usernameTest,
+        birthMonthTest,
+        birthDayTest,
+        birthYearTest
+      );
       return console.log("Unable to Register!");
     }
     axios
@@ -45,7 +65,7 @@ export default function Register() {
         password,
         first_name: firstName,
         last_name: lastName,
-        date_of_birth: new Date(`${birthMonth - 1}/${birthDay}/${birthYear}`),
+        date_of_birth: new Date(`${birthMonth}/${birthDay}/${birthYear}`),
       })
       .then((res) => {
         navigate("/");
@@ -62,7 +82,10 @@ export default function Register() {
         
         
   return (
-    <div className="hero is-fullheight" style={{backgroundColor: '#14161A', height: '100vh', overflowY: 'auto' }}>
+    <div
+      className="hero is-fullheight"
+      style={{ backgroundColor: "#14161A", height: "100vh", overflowY: "auto" }}
+    >
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
@@ -74,7 +97,7 @@ export default function Register() {
                     <label className="label">Email</label>
                     <div className="control has-icons-left">
                       <input
-                        className="input"
+                        className={`input ${emailTest ? "" : "is-danger"}`}
                         type="text"
                         placeholder="Email Address"
                         value={email}
@@ -86,7 +109,7 @@ export default function Register() {
                     <label className="label">Username</label>
                     <div className="control has-icons-left">
                       <input
-                        className={`input ${usernameTest ? '' : 'is-danger'}`}
+                        className={`input ${usernameTest ? "" : "is-danger"}`}
                         type="text"
                         placeholder="Username"
                         value={username}
@@ -126,7 +149,9 @@ export default function Register() {
                       <div className="field has-addons">
                         <div className="control">
                           <input
-                            className="input"
+                            className={`input ${
+                              birthMonthTest ? "" : "is-danger"
+                            }`}
                             type="number"
                             placeholder="MM"
                             value={birthMonth}
@@ -137,7 +162,9 @@ export default function Register() {
                         </div>
                         <div className="control">
                           <input
-                            className="input"
+                            className={`input ${
+                              birthDayTest ? "" : "is-danger"
+                            }`}
                             type="number"
                             placeholder="DD"
                             value={birthDay}
@@ -148,7 +175,9 @@ export default function Register() {
                         </div>
                         <div className="control">
                           <input
-                            className="input"
+                            className={`input ${
+                              birthYearTest ? "" : "is-danger"
+                            }`}
                             type="number"
                             placeholder="YYYY"
                             value={birthYear}
@@ -176,7 +205,7 @@ export default function Register() {
                     <label className="label">Confirm Password</label>
                     <div className="control has-icons-left">
                       <input
-                        className={`input ${passwordTest ? '' : 'is-danger'}`}
+                        className={`input ${passwordTest ? "" : "is-danger"}`}
                         type="password"
                         placeholder="Confirm Password"
                         value={confirmPassword}
@@ -186,8 +215,13 @@ export default function Register() {
                   </div>
                   <div className="field">
                     <div className="control">
-                      <button className="button is-primary is-fullwidth m-0">Create Account</button>
-                      <Link to="/LogIn" className="button is-primary is-fullwidth is-outlined mt-5">
+                      <button className="button is-primary is-fullwidth m-0">
+                        Create Account
+                      </button>
+                      <Link
+                        to="/LogIn"
+                        className="button is-primary is-fullwidth is-outlined mt-5"
+                      >
                         Return to Login
                       </Link>
                     </div>
