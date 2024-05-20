@@ -19,7 +19,7 @@ export default function Register() {
   
   
   // Checks if the username is less than 12 characters
-  const usernameTest = username.length <= 12;
+  const usernameTest = username.length <= 12 && username.length > 0;
   
   // Checks if the passwords match
   const passwordTest = password === confirmPassword;
@@ -29,6 +29,8 @@ export default function Register() {
   const birthMonthTest = birthMonth >= 1 && birthMonth <= 12;
   const birthDayTest = birthDay >= 1 && birthDay <= 31;
   const birthYearTest = birthYear >= 1900 && birthYear <= 2023;
+  const firstNameTest = firstName.trim() !== "";
+  const lastNameTest = lastName.trim() !== "";
   
   // Handles input changes and saves it to state
   const handleChange = (setState) => (event) => {
@@ -45,7 +47,9 @@ export default function Register() {
         usernameTest &&
         birthMonthTest &&
         birthDayTest &&
-        birthYearTest
+        birthYearTest &&
+        firstNameTest &&
+        lastNameTest
       )
     ) {
       console.log(
@@ -54,7 +58,9 @@ export default function Register() {
         usernameTest,
         birthMonthTest,
         birthDayTest,
-        birthYearTest
+        birthYearTest,
+        firstNameTest,
+        lastNameTest
       );
       return console.log("Unable to Register!");
     }
@@ -123,7 +129,7 @@ export default function Register() {
                     <label className="label">First Name</label>
                     <div className="control has-icons-left">
                       <input
-                        className="input"
+                        className={`input ${firstNameTest ? "" : "is-danger"}`}
                         type="text"
                         placeholder="First Name"
                         value={firstName}
@@ -135,7 +141,7 @@ export default function Register() {
                     <label className="label">Last Name</label>
                     <div className="control has-icons-left">
                       <input
-                        className="input"
+                        className={`input ${lastNameTest ? "" : "is-danger"}`}
                         type="text"
                         placeholder="Last Name"
                         value={lastName}
