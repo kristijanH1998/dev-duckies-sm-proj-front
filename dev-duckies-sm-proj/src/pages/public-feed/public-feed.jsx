@@ -26,8 +26,8 @@ function PublicFeed() {
               key={post.id}
               username= {post.username}
               postContent={post.content}
-              date={post.timestamp}
-              time={post.timestamp}
+              date={post.timestamp.substr(0, 10)}
+              time={post.timestamp.substr(11, 8)}
             />
           ))}
         </div>
