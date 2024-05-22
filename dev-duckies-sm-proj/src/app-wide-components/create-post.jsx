@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 axios.defaults.withCredentials = true;
 
 export default function CreatePost(){
-  const [post_content, setPost_content] =useState()
+  const [post_content, setPost_content] = useState()
+  const [username, setUsername] = useState()
 
   function handleChange(event) {
     setPost_content(event.target.value)
@@ -17,6 +18,13 @@ export default function CreatePost(){
     .then(res => {console.log(res)})
     .catch(error => {console.log(error.response.data.error)})
   }
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/profile')
+    .then(res => { setUsername(res.data.profile.username) })
+    .catch(error => console.log(error.response.data.error));
+  }, [])
+
   
   return (
       <>
@@ -26,13 +34,11 @@ export default function CreatePost(){
              
                 
                 <header className="card-header is-flex-direction-row is-align-items-center p-4">
-                 
                   <figure className= "image is-48x48 is-square mr-5 ml-3">
-                      <img className= "is-rounded" src = "https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2011/05/ryan_gosling.jpg"></img>
-                    </figure>
-                      <p>Ryan-gooseling-445</p>
-                 
-                  </header>
+                      <img className= "is-rounded" src = "https://mediaproxy.salon.com/width/1200/https://media2.salon.com/2011/05/ryan_gosling.jpg" />
+                  </figure>
+                      <p>{username}</p>
+                </header>
                 
              </div>
                {/*Bellow is text form in order to write and submit post*/}
