@@ -1,7 +1,24 @@
+import React from 'react'
+import { useState } from 'react'
+import axios from 'axios'
+
+axios.defaults.withCredentials = true;
+
 export default function CreatePost(){
+  const [post_content, setPost_content] =useState()
+
+  function handleChange(event) {
+    setPost_content(event.target.value)
+  }
+
+  function sharePost(event) {
+    event.preventDefault()
+    axios.post('http://localhost:8080/posts', {post_content})
+    .then(res => {console.log(res)})
+    .catch(error => {console.log(error.response.data.error)})
+  }
+  
   return (
-
-
       <>
         <div className = "card m-6">
           {/*Bellow is navbar that will also contain user pic and name*/}
@@ -19,15 +36,10 @@ export default function CreatePost(){
                 
              </div>
                {/*Bellow is text form in order to write and submit post*/}
-              <form className="text-form">
-
-
-             
-                <textarea className= "textarea is-primary  is medium" type="text" placeholder = "Share your thoughts..."></textarea>
-               
-              </form>
-               
+              <form className="text-form" onSubmit={sharePost}>
+                <textarea className="textarea is-primary  is medium" type="text" placeholder="Share your thoughts..." onChange={handleChange}  value={post_content}></textarea>
                 <button className="button is-primary">Share</button>
+              </form>
               {/*May be rethink the footer. Need an exit out button*/}
               {/*This is the footer at the bottom of my card
                 <div className="card">
