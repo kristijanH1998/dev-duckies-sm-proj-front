@@ -14,7 +14,7 @@ function PublicFeed() {
     axios.get('http://localhost:8080/feed/1')
     .then(res => setPosts(res.data))
     .catch(err => console.log(err));
-  }, [])
+  }, [posts])
 
   return (
     <div className="App">
@@ -28,6 +28,10 @@ function PublicFeed() {
               postContent={post.content}
               date={post.timestamp.substr(0, 10)}
               time={post.timestamp.substr(11, 8)}
+              profilePic={post.profilePic}
+              likeCount={post.likeCount}
+              commentCount={post.commentCount}
+              id={post.id}
             />
           ))}
         </div>
