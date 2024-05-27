@@ -7,15 +7,26 @@ export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("")
 
   const fetchData = (value) => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
+    // test code to compare fetching data from the two endpoints
+    // fetch("https://jsonplaceholder.typicode.com/users").then((response) => console.log(response.json()))
+    // fetch("http://localhost:8080/profile/userList", {
+    //   credentials: 'include',
+    //   method: 'GET',
+    //   headers: {'Content-Type': 'application/json', },
+    // }).then((response) => response.json().then(json => console.log(json)))
+
+    fetch("http://localhost:8080/profile/userList", {
+      credentials: 'include',
+      method: 'GET',
+      headers: {'Content-Type': 'application/json', },
+    }).then((response) => response.json())
       .then((json) => {
         const results = json.filter((user) => {
           return (
             value &&
             user &&
-            user.name &&
-            user.name.toLowerCase().includes(value)
+            user.username &&
+            user.username.toLowerCase().includes(value.toLowerCase())
           )
         })
         setResults(results)
@@ -33,7 +44,7 @@ export const SearchBar = ({ setResults }) => {
       <input
         type="text"
         placeholder='Search'
-        name='name'
+        name='username'
         autoComplete="off"
         value={input}
         onChange={(e) => handleChange(e.target.value)}
