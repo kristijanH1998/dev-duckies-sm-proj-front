@@ -11,7 +11,6 @@ const Post = (props) => {
   const [liked, setLiked] = useState(false);
 
   function createLike(postId) {
-    
     if(!liked) {
       setLiked(true);
       axios.post(`http://localhost:8080/posts/${postId}/like`)
