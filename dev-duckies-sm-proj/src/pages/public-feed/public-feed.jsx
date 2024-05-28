@@ -1,31 +1,39 @@
 import Header from "../../app-wide-components/Navbar/MobileNav.jsx";
 import Post from "../../app-wide-components/post.jsx";
 import "../../index.css";
+import axios from 'axios'
+import { useState, useEffect } from "react";
+
+axios.defaults.withCredentials = true;
 
 function PublicFeed() {
+  
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/feed/1')
+    .then(res => setPosts(res.data))
+    .catch(err => {return err.code});
+  }, [posts])
+
   return (
     <div className="App">
       <Header />
       <div className="columns">
         <div className="column is-12">
-          <Post
-            username="Tommy"
-            postContent="Testing 123"
-            date="10/3/24"
-            time="13:14"
-          />
-          <Post
-            username="Jessie"
-            postContent="Testing 123"
-            date="10/3/24"
-            time="13:14"
-          />
-          <Post
-            username="Albert"
-            postContent="Testing 123"
-            date="10/3/24"
-            time="13:14"
-          />
+          {posts.map(post => (
+            <Post
+              key={post.id}
+              username= {post.username}
+              postContent={post.content}
+              date={post.timestamp.substr(0, 10)}
+              time={post.timestamp.substr(11, 8)}
+              profilePic={post.profilePic}
+              likeCount={post.likeCount}
+              commentCount={post.commentCount}
+              id={post.id}
+            />
+          ))}
         </div>
       </div>
     </div>
