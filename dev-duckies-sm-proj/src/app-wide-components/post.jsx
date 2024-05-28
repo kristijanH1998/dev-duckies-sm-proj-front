@@ -113,13 +113,14 @@ const Post = (props) => {
                       <span>{JSON.parse(JSON.stringify(likeUser.username))}</span>
                     </div>
                   </div>
+                  <br></br>
                 </li>))}
             </ul>
           </section>
           <footer className="modal-card-foot">
-            <div className="buttons">
-              <button className='button is-success mt-1' onClick={() => setLikeIsOpen(false)}>Close</button>
-            </div>
+            <button className='button is-success mx-1 mt-0' onClick={() => setLikeIsOpen(false)}>Close</button>
+            <button className='button is-secondary mx-6 mt-0' onClick={() => setLikeIsOpen(false)}>Prev</button>
+            <button className='button is-secondary mx-6 mt-0' onClick={() => setLikeIsOpen(false)}>Next</button>
           </footer>
         </div>
       </div>
