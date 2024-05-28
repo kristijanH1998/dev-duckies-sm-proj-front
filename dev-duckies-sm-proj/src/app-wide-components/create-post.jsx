@@ -22,7 +22,7 @@ export default function CreatePost(){
 
   useEffect(() => {
     axios.get('http://localhost:8080/profile')
-    .then(res => { setUsername(res.data.profile.username) })
+    .then(res => { setUsername(res.data.username) })
     .catch(error => console.log(error.response.data.error));
 
     //below axios request is a test of updating profile with new profile image
