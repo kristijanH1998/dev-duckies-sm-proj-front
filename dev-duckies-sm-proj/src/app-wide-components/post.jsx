@@ -102,8 +102,18 @@ const Post = (props) => {
           <section className="modal-card-body">
             <ul>
               {likeUsers.map(likeUser => (
-                <li key={likeUser.username}><span>{JSON.stringify(likeUser.profile_pic)}</span>
-                                            <span>{JSON.stringify(likeUser.username)}</span></li>))}
+                <li key={likeUser.username}>
+                  <div className="media m-auto">
+                    <div className="media-left">
+                      <figure className= "image is-48x48 is-square"><img className="is-rounded"
+                          src={`data:image/png;base64,${JSON.parse(JSON.stringify(likeUser.profile_pic))}`}
+                          alt="Placeholder image"/></figure>
+                    </div>
+                    <div className="media-content">
+                      <span>{JSON.parse(JSON.stringify(likeUser.username))}</span>
+                    </div>
+                  </div>
+                </li>))}
             </ul>
           </section>
           <footer className="modal-card-foot">
