@@ -8,20 +8,27 @@ const Post = (props) => {
 
   const [commentIsOpen, setCommentIsOpen] = useState(false);
   const [likeIsOpen, setLikeIsOpen] = useState(false);
-  const [liked, setLiked] = useState(false);
+  const [likeUsers, setLikeUsers] = useState([]);
 
   function createLike(postId) {
-    if(!liked) {
-      setLiked(true);
-      axios.post(`http://localhost:8080/posts/${postId}/like`)
-      .then(res => {console.log(res)})
-      .catch(error => {console.log(error.response.data.error)})
-    } else {
-      setLiked(false);
-      axios.delete(`http://localhost:8080/posts/${postId}/delLike`)
-      .then(res => {console.log(res)})
-      .catch(error => {console.log(error.response.data.error)})
-    }
+    axios.post(`http://localhost:8080/posts/${postId}/like`)
+      .then(res1 => {
+        if(res1.status == 200) {
+          axios.delete(`http://localhost:8080/posts/${postId}/delLike`)
+            .then(res2 => {
+              showLikes(postId, 1);
+            })
+            .catch(error => {console.log(error.response.data.error)})
+        } else {
+          showLikes(postId, 1);
+        }
+      }).catch(error => {console.log(error.response.data.error)})
+  }
+
+  function showLikes(postId, page) {
+    axios.get(`http://localhost:8080/posts/${postId}/${page}/likes`)
+    .then(res => {setLikeUsers(res.data)})
+    .catch(err => console.log(err))
   }
 
   return (
@@ -94,7 +101,9 @@ const Post = (props) => {
           </header>
           <section className="modal-card-body">
             <ul>
-              <li>YOU</li>
+              {likeUsers.map(likeUser => (
+                <li key={likeUser.username}><span>{JSON.stringify(likeUser.profile_pic)}</span>
+                                            <span>{JSON.stringify(likeUser.username)}</span></li>))}
             </ul>
           </section>
           <footer className="modal-card-foot">

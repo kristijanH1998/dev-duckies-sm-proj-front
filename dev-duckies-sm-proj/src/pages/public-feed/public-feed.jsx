@@ -13,7 +13,7 @@ function PublicFeed() {
   useEffect(() => {
     axios.get('http://localhost:8080/feed/1')
     .then(res => setPosts(res.data))
-    .catch(err => console.log(err));
+    .catch(err => {return err.code});
   }, [posts])
 
   return (
