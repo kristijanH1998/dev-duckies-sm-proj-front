@@ -11,7 +11,7 @@ const handleLogout = () => {
   axios
     .get("http://localhost:8080/auth/logout")
     .then((res) => {
-      navigate("/login");
+      navigate("/");
     })
     .catch((error) => {
       console.log(error);

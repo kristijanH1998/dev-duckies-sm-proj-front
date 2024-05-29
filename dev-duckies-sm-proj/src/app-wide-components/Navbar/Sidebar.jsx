@@ -8,7 +8,7 @@ export default function Sidebar() {
           <h3 className="title is-3">Ducki</h3>
         </Link>
 
-        <NavLink to="/" className='sidebar-item'>
+        <NavLink to="feed" className='sidebar-item'>
           <span className="icon-text">
             <span className="icon">
               <span className="material-symbols-rounded">

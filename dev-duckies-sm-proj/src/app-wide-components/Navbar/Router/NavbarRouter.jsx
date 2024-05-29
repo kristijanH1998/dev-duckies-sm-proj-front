@@ -24,8 +24,8 @@ import RootLayout from '../Layout/RootLayout'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<RootLayout />}>
-        <Route index element={<PublicFeed />} />
+      <Route path="home" element={<RootLayout />}>
+        <Route index path="feed" element={<PublicFeed />} />
         <Route path="search" element={<Search />} />
         <Route path="post" element={<CreatePost />} />
         <Route path="profile" element={<ProfilePage />} />
@@ -34,10 +34,10 @@ const router = createBrowserRouter(
       </Route>
       <Route path="forgotpw" element={<ForgotPassword />} />
       <Route path="register" element={<Register />} />
-      <Route path="login" element={<LoginPage />} />
+      <Route path="/" element={<LoginPage />} />
     </>
   )
-)
+);
 
 export default function NavbarRouter() {
   return (
