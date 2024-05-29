@@ -7,6 +7,7 @@ axios.defaults.withCredentials = true;
 const Post = (props) => {
 
   const [commentIsOpen, setCommentIsOpen] = useState(false);
+  const [commentContent, setCommentContent] = useState("");
   const [likeIsOpen, setLikeIsOpen] = useState(false);
   const [likeUsers, setLikeUsers] = useState([]);
 
@@ -31,11 +32,34 @@ const Post = (props) => {
     .catch(err => console.log(err))
   }
 
+  const postComment = () => {
+    if (commentContent.trim() === "") {
+      alert("Comment cannot be empty");
+      return;
+    }
+
+    axios
+      .post(`http://localhost:8080/posts/${props.id}/comment`, {
+        comment_content: commentContent,
+      })
+      .then((res) => {
+        if (res.status === 201) {
+          setCommentContent("");
+          setCommentIsOpen(false);
+          // Optionally, refresh comments or update comment count
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Error posting comment");
+      });
+  };
+
   return (
     <div className="box">
       <div className="media m-auto">
         <div className="media-left">
-          <figure className= "image is-48x48 is-square mr-5 ml-3">
+          <figure className="image is-48x48 is-square mr-5 ml-3">
             <img
               className="is-rounded"
               src={`data:image/png;base64,${props.profilePic}`}
@@ -58,7 +82,11 @@ const Post = (props) => {
         <div className="level-left">
           <a className="level-item" aria-label="comment">
             <span className="icon is-small">
-              <button className='button is-borderless m-0 p-0' id='comment' onClick={() => setCommentIsOpen(true)}>
+              <button
+                className="button is-borderless m-0 p-0"
+                id="comment"
+                onClick={() => setCommentIsOpen(true)}
+              >
                 <i className="fas fa-comment"></i>
               </button>
             </span>
@@ -66,7 +94,14 @@ const Post = (props) => {
           <p>{props.commentCount}</p>
           <a className="level-item" aria-label="like">
             <span className="icon is-small">
-              <button className='button is-borderless m-0 p-0' id='like' onClick={() => {setLikeIsOpen(true); createLike(props.id)}}>
+              <button
+                className="button is-borderless m-0 p-0"
+                id="like"
+                onClick={() => {
+                  setLikeIsOpen(true);
+                  createLike(props.id);
+                }}
+              >
                 <i className="fas fa-heart"></i>
               </button>
             </span>
@@ -74,53 +109,103 @@ const Post = (props) => {
           <p>{props.likeCount}</p>
         </div>
       </nav>
-      <div className={`modal ${commentIsOpen ? 'is-active' : ''}`}>
-        <div className="modal-background" onClick={() => setCommentIsOpen(false)}></div>
+      <div className={`modal ${commentIsOpen ? "is-active" : ""}`}>
+        <div
+          className="modal-background"
+          onClick={() => setCommentIsOpen(false)}
+        ></div>
         <div className="modal-card">
           <header className="modal-card-head">
             <p className="modal-card-title">Write a comment!</p>
-            <button className="delete" aria-label="close" onClick={() => setCommentIsOpen(false)}></button>
+            <button
+              className="delete"
+              aria-label="close"
+              onClick={() => setCommentIsOpen(false)}
+            ></button>
           </header>
           <section className="modal-card-body">
-            <textarea className='textarea' id='comments'></textarea>
+            <textarea
+              className="textarea"
+              id="comments"
+              value={commentContent}
+              onChange={(e) => setCommentContent(e.target.value)}
+            ></textarea>
           </section>
           <footer className="modal-card-foot">
             <div className="buttons">
-              <button className="button is-success mt-1">Post</button>
-              <button className='button is-ghost mt-1' onClick={() => setCommentIsOpen(false)}>Cancel</button>
+              <button className="button is-success mt-1" onClick={postComment}>
+                Post
+              </button>
+              <button
+                className="button is-ghost mt-1"
+                onClick={() => setCommentIsOpen(false)}
+              >
+                Cancel
+              </button>
             </div>
           </footer>
         </div>
       </div>
-      <div className={`modal ${likeIsOpen ? 'is-active' : ''}`}>
-        <div className="modal-background" onClick={() => setLikeIsOpen(false)}></div>
+      <div className={`modal ${likeIsOpen ? "is-active" : ""}`}>
+        <div
+          className="modal-background"
+          onClick={() => setLikeIsOpen(false)}
+        ></div>
         <div className="modal-card">
           <header className="modal-card-head">
             <p className="modal-card-title">See who likes this post!</p>
-            <button className="delete" aria-label="close" onClick={() => setLikeIsOpen(false)}></button>
+            <button
+              className="delete"
+              aria-label="close"
+              onClick={() => setLikeIsOpen(false)}
+            ></button>
           </header>
           <section className="modal-card-body">
             <ul>
-              {likeUsers.map(likeUser => (
+              {likeUsers.map((likeUser) => (
                 <li key={likeUser.username}>
                   <div className="media m-auto">
                     <div className="media-left">
-                      <figure className= "image is-48x48 is-square"><img className="is-rounded"
-                          src={`data:image/png;base64,${JSON.parse(JSON.stringify(likeUser.profile_pic))}`}
-                          alt="Placeholder image"/></figure>
+                      <figure className="image is-48x48 is-square">
+                        <img
+                          className="is-rounded"
+                          src={`data:image/png;base64,${JSON.parse(
+                            JSON.stringify(likeUser.profile_pic)
+                          )}`}
+                          alt="Placeholder image"
+                        />
+                      </figure>
                     </div>
                     <div className="media-content">
-                      <span>{JSON.parse(JSON.stringify(likeUser.username))}</span>
+                      <span>
+                        {JSON.parse(JSON.stringify(likeUser.username))}
+                      </span>
                     </div>
                   </div>
                   <br></br>
-                </li>))}
+                </li>
+              ))}
             </ul>
           </section>
           <footer className="modal-card-foot">
-            <button className='button is-success mx-1 mt-0' onClick={() => setLikeIsOpen(false)}>Close</button>
-            <button className='button is-secondary mx-6 mt-0' onClick={() => setLikeIsOpen(false)}>Prev</button>
-            <button className='button is-secondary mx-6 mt-0' onClick={() => setLikeIsOpen(false)}>Next</button>
+            <button
+              className="button is-success mx-1 mt-0"
+              onClick={() => setLikeIsOpen(false)}
+            >
+              Close
+            </button>
+            <button
+              className="button is-secondary mx-6 mt-0"
+              onClick={() => setLikeIsOpen(false)}
+            >
+              Prev
+            </button>
+            <button
+              className="button is-secondary mx-6 mt-0"
+              onClick={() => setLikeIsOpen(false)}
+            >
+              Next
+            </button>
           </footer>
         </div>
       </div>

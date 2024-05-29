@@ -74,7 +74,14 @@ export default function Register() {
         date_of_birth: new Date(`${birthMonth}/${birthDay}/${birthYear}`),
       })
       .then((res) => {
-        navigate("/");
+        axios.post("http://localhost:8080/auth/login", { email, password })
+      .then((res) => {
+       navigate("/home/feed"); 
+      })
+      .catch((error) => {
+        console.log(error.response.data.error);
+      })
+        
       })
       .catch((error) => {
         console.log(error.response.data.error);
@@ -225,7 +232,7 @@ export default function Register() {
                         Create Account
                       </button>
                       <Link
-                        to="/LogIn"
+                        to="/"
                         className="button is-primary is-fullwidth is-outlined mt-5"
                       >
                         Return to Login
