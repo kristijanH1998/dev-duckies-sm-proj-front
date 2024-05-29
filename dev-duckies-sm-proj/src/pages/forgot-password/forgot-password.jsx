@@ -84,7 +84,7 @@ export default function ForgotPassword() {
 
                     <buttons> 
                     <button className="button is-primary is-fullwidth" type="submit">Send Code</button>
-                    <Link to="/LogIn" className="button is-primary is-fullwidth is-outlined">Return to Login</Link>
+                    <Link to="/" className="button is-primary is-fullwidth is-outlined">Return to Login</Link>
                     </buttons>
 
                   </form>
