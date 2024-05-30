@@ -20,3 +20,57 @@
 .search-result:hover {
   background-color: var(--search-result-hover-bg-color);
 }
+
+.modal-card {
+  width: 70vw;
+}
+
+.card-body-contents {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 50vh;
+}
+
+.user-posts {
+  max-width: 50%;
+  background: #15171b;
+  overflow-y: scroll;
+}
+
+.user-info {
+  max-width: 50%;
+  background: #14161a;
+  border-right: 1px solid rgba(255, 255, 255, .1);
+}
+
+.name {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2rem;
+  font-weight: 900;
+  background: #121113;
+  padding: 14px 0 14px;
+}
+
+.bio {
+  text-align: center;
+  margin-top: 10%;
+  padding: 40px 0 40px;
+  background: #121113;
+  overflow-y: scroll;
+}
+
+.extra-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: #121113;
+  padding: 14px 0 14px;
+}
+
+.modal-card-foot {
+  display: flex;
+  justify-content: center;
+}

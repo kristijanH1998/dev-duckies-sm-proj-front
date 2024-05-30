@@ -61,36 +61,51 @@ export const SearchResult = ({ result }) => {
               onClick={() => setProfileIsOpen(false)}
             ></button>
           </header>
-          <section className="modal-card-body">
-            {posts.map((post) => {
-              return (
-                <div className="box" key={post._id}>
-                  {/* <div className="media m-auto">
-                    <div className="media-left">
-                      <figure className="image is-48x48 is-square mr-5 ml-3">
-                        <img
-                          className="is-rounded"
-                          src={`data:image/png;base64,${props.profilePic}`}
-                          alt="Placeholder image"
-                        />
-                      </figure>
+          <div className='card-body-contents'>
+            <section className="modal-card-body user-posts">
+              {posts.map((post) => {
+                return (
+                  <div className="box" key={post._id}>
+                    {/* <div className="media m-auto">
+                      <div className="media-left">
+                        <figure className="image is-48x48 is-square mr-5 ml-3">
+                          <img
+                            className="is-rounded"
+                            src={`data:image/png;base64,${props.profilePic}`}
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                      <div className="media-content">
+                        <p className="title is-4">{props.username}</p>
+                      </div>
+                    </div> */}
+                    <div className="content">
+                      <p>{post.post_content}</p>
+                      <time>
+                      {post.post_timestamp.substr(0, 10)} 
+                      </time> <br></br>
+                      <i className="fas fa-comment"><p>{post.post_comment_count}</p></i>
+                      <i className="fas fa-heart"><p>{post.post_like_count}</p></i>
                     </div>
-                    <div className="media-content">
-                      <p className="title is-4">{props.username}</p>
-                    </div>
-                  </div> */}
-                  <div className="content">
-                    <p>{post.post_content}</p>
-                    <time>
-                    {post.post_timestamp.substr(0, 10)} 
-                    </time> <br></br>
-                    <i className="fas fa-comment"><p>{post.post_comment_count}</p></i>
-                    <i className="fas fa-heart"><p>{post.post_like_count}</p></i>
-                  </div>
-                </div>        
-              )
-            })}
-          </section>
+                  </div>        
+                )
+              })}
+            </section>
+            <section className="modal-card-body user-info">
+              <div className="name box">
+                <h1>First</h1>
+                <h1>Last</h1>
+              </div>
+              <div className="bio box">
+                <p>adncoscdnosndconcdson</p>
+              </div>
+              <div className="extra-info box">
+                <h2>Birthday: N/A</h2>
+                <h2>Country: N/A</h2>
+              </div>
+            </section>
+          </div>
           <footer className="modal-card-foot">
             <div className="buttons">
               <button
