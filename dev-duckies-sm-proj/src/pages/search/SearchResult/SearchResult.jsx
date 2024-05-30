@@ -97,15 +97,15 @@ export const SearchResult = ({ result }) => {
             </section>
             <section className="modal-card-body user-info">
               <div className="name box">
-                <h1>First</h1>
-                <h1>Last</h1>
+                <h1>{userInfo.first_name}</h1>
+                <h1>{userInfo.last_name}</h1>
               </div>
               <div className="bio box">
-                <p>adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson</p>
+                <p>{userInfo.biography ? userInfo.biography : "N/A"}</p>
               </div>
               <div className="extra-info box">
-                <h2>Birthday: N/A</h2>
-                <h2>Country: N/A</h2>
+                <h2>Birthday: {userInfo.date_of_birth ? userInfo.date_of_birth.substr(0, 10) : "N/A"}</h2>
+                <h2>Country: {userInfo.country ? userInfo.country : "N/A"}</h2>
               </div>
             </section>
           </div>
