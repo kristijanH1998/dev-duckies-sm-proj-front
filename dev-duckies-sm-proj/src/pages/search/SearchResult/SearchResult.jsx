@@ -32,7 +32,7 @@ export const SearchResult = ({ result }) => {
 
   useEffect(() => {
     if(page > 0) {
-      console.log(page)
+      // console.log(page)
       axios.get(`http://localhost:8080/posts/user/${result.username}/${page}`)
       .then(res => {setPosts(res.data)})
       .catch(err => console.log(err));
@@ -63,7 +63,32 @@ export const SearchResult = ({ result }) => {
           </header>
           <section className="modal-card-body">
             {posts.map((post) => {
-              return <p key={post.username}>{post.post_content}</p> 
+              return (
+                <div className="box" key={post._id}>
+                  {/* <div className="media m-auto">
+                    <div className="media-left">
+                      <figure className="image is-48x48 is-square mr-5 ml-3">
+                        <img
+                          className="is-rounded"
+                          src={`data:image/png;base64,${props.profilePic}`}
+                          alt="Placeholder image"
+                        />
+                      </figure>
+                    </div>
+                    <div className="media-content">
+                      <p className="title is-4">{props.username}</p>
+                    </div>
+                  </div> */}
+                  <div className="content">
+                    <p>{post.post_content}</p>
+                    <time>
+                    {post.post_timestamp.substr(0, 10)} 
+                    </time> <br></br>
+                    <i className="fas fa-comment"><p>{post.post_comment_count}</p></i>
+                    <i className="fas fa-heart"><p>{post.post_like_count}</p></i>
+                  </div>
+                </div>        
+              )
             })}
           </section>
           <footer className="modal-card-foot">
