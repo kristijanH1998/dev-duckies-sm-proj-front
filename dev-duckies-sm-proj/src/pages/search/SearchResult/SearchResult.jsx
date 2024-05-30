@@ -35,7 +35,6 @@ export const SearchResult = ({ result }) => {
 
   useEffect(() => {
     if(page > 0) {
-      // console.log(page)
       axios.get(`http://localhost:8080/posts/user/${result.username}/${page}`)
       .then(res => {setPosts(res.data)})
       .catch(err => console.log(err));
@@ -76,20 +75,6 @@ export const SearchResult = ({ result }) => {
               {posts.map((post) => {
                 return (
                   <div className="box" key={post._id}>
-                    {/* <div className="media m-auto">
-                      <div className="media-left">
-                        <figure className="image is-48x48 is-square mr-5 ml-3">
-                          <img
-                            className="is-rounded"
-                            src={`data:image/png;base64,${props.profilePic}`}
-                            alt="Placeholder image"
-                          />
-                        </figure>
-                      </div>
-                      <div className="media-content">
-                        <p className="title is-4">{props.username}</p>
-                      </div>
-                    </div> */}
                     <div className="content">
                       <p>{post.post_content}</p>
                       <time>
