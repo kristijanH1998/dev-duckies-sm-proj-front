@@ -9,19 +9,22 @@ export const SearchResult = ({ result }) => {
   const [profileIsOpen, setProfileIsOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
-
+  const [userInfo, setUserInfo] = useState({});
+  
   function showProfile(username) {
-    // console.log(page);
     axios.get(`http://localhost:8080/posts/user/${username}/1`)
     .then(res => {setPosts(res.data)})
     .catch(err => console.log(err))
-    // console.log(posts); 
+    axios.get(`http://localhost:8080/profile/user/${username}`)
+    .then(res => {setUserInfo(res.data)})
+    .catch(err => console.log(err))
   }
 
   const increasePage = () => {
-    if (posts.length !== 0) {
+    if (posts.length === 5) {
       setPage(page + 1);
     }
+    console.log(userInfo)
   };
 
   const decreasePage = () => {
