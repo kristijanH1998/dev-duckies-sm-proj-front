@@ -101,7 +101,12 @@ export const SearchResult = ({ result }) => {
                 <h1>Last</h1>
               </div>
               <div className="bio box">
-                <p>adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson</p>
+                <p>adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson
+                adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson
+                adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson
+                adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson
+                adncoscdnosndconcdsonadncoscnosndconcdsonadncoscdnosndconcdsonadncoscdnosndconcdonadncoscdnosndconcdson
+                </p>
               </div>
               <div className="extra-info box">
                 <h2>Birthday: N/A</h2>
