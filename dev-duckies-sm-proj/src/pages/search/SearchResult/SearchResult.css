@@ -58,6 +58,7 @@
   padding: 40px 0 40px;
   background: #121113;
   overflow-y: scroll;
+  overflow-wrap: break-word;
 }
 
 .extra-info {
@@ -73,4 +74,40 @@
 .modal-card-foot {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .card-body-contents {
+    flex-direction: column-reverse;
+    height: 60vh;
+  }
+
+  .user-posts {
+    min-width: 100%;
+    min-height: 50%;
+  }
+
+  .user-info {
+    min-width: 100%;
+    min-height: 50%;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-right: none;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .extra-info {
+    font-size: 1.5rem;
+    padding: 0;
+    margin-top: 5%;
+  }
+  
+  .bio {
+    margin-top: 5%;
+    padding: 10px 10px 10px 10px;
+    max-height: 35%;
+  }
 }
