@@ -57,7 +57,14 @@ export const SearchResult = ({ result }) => {
         ></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Username</p>
+            <figure className="image is-48x48 is-square mr-5 ml-3">
+              <img
+                className="is-rounded"
+                src={`data:image/png;base64,${result.profilePic}`}
+                alt="Placeholder image"
+              />
+            </figure>
+            <p className="modal-card-title">{result.username}</p>
             <button
               className="delete"
               aria-label="close"
