@@ -20,3 +20,7 @@
 .search-result:hover {
   background-color: var(--search-result-hover-bg-color);
 }
+
+.modal-card {
+  min-width: 50%;
+}
