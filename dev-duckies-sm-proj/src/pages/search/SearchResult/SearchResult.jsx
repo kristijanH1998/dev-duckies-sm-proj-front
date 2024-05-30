@@ -19,11 +19,15 @@ export const SearchResult = ({ result }) => {
   }
 
   const increasePage = () => {
-    setPage(page + 1);
+    if (posts.length !== 0) {
+      setPage(page + 1);
+    }
   };
 
   const decreasePage = () => {
-    setPage(page - 1);
+    if (page > 1) {
+      setPage(page - 1);
+    }
   };
 
   useEffect(() => {
@@ -59,7 +63,7 @@ export const SearchResult = ({ result }) => {
           </header>
           <section className="modal-card-body">
             {posts.map((post) => {
-              return <p>{post.post_content}</p> 
+              return <p key={post.username}>{post.post_content}</p> 
             })}
           </section>
           <footer className="modal-card-foot">
