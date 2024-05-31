@@ -1,0 +1,105 @@
+@use "bulma/sass/utilities/mixins";
+
+.upper-section{
+  @include mixins.from(769px){
+    padding-left: 2%;
+  }
+  
+}
+#header{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background-color: var(--background-color);
+  @include mixins.from(769px) {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-left: 5%;
+  }}
+
+ #bio-logic{
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    align-items:center;
+    padding-bottom: 50px;
+    @include mixins.from(769px){
+      align-items:flex-start
+    }
+  
+ }
+.bio-and-button{
+  display:flex;
+  
+  flex-direction:column;
+  align-items:center;
+  @include mixins.from(769px){
+  padding-left:2%;
+  
+  max-width:200px;
+  }
+  
+}
+.bio-text{
+  display:flex;
+  text-align:center;
+}
+
+.card-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width: 300px;
+  padding:0;
+  @include mixins.from(769px){
+    max-width: 250px;
+  }
+}
+
+.bio-textarea{
+  width:200px;
+  height:50px;
+  resize:none;
+  border:solid gray 1px;
+  border-radius: 10px;
+  
+}
+.bio-textarea :focus{
+  width:200px;
+  height:50px;
+  resize:none;
+  border:none;
+}
+
+#text-area-save{
+  display:flex;
+  justify-content:center;
+  margin-bottom: 5px;
+}
+
+#feed-background{
+  background-color: var(--profile-feed-background) ;
+}
+
+.is-size-3{
+  display:flex;
+  justify-content:center;
+}
+
+.edit-bio{
+  flex:0 0 auto;}
+  .upper-section{
+    margin-bottom: 0px;
+}
+
+#profile-pic-and-username { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+}
