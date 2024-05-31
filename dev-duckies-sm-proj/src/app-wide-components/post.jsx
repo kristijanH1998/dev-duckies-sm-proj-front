@@ -11,22 +11,34 @@ const Post = (props) => {
   const [likeIsOpen, setLikeIsOpen] = useState(false);
   const [likeUsers, setLikeUsers] = useState([]);
   const [comments, setComments] = useState([]);
+  const [commentPage, setCommentPage] = useState(1);
 
   useEffect(() => {
     if (commentIsOpen) {
-      fetchComments();
+      fetchComments(commentPage);
     }
-  }, [commentIsOpen]);
+  }, [commentIsOpen, commentPage]);
 
-  const fetchComments = () => {
+  const fetchComments = (page) => {
     axios
-      .get(`http://localhost:8080/posts/${props.id}/1/allComments`)
+      .get(`http://localhost:8080/posts/${props.id}/${page}/allComments`)
       .then((res) => {
         setComments(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+  const increaseCommentPage = () => {
+    if (comments.length === 5) {
+      setCommentPage(commentPage + 1);
+    }
+  };
+
+  const decreaseCommentPage = () => {
+    if (commentPage > 1) {
+      setCommentPage(commentPage - 1);
+    }
   };
 
   function createLike(postId) {
@@ -157,8 +169,16 @@ const Post = (props) => {
               value={commentContent}
               onChange={(e) => setCommentContent(e.target.value)}
             ></textarea>
+            <button className="button is-success mt-5 mb-5" onClick={postComment}>
+              Post
+            </button>
+            <button
+              className="button is-ghost mt-5 mb-5"
+              onClick={() => setCommentIsOpen(false)}
+            >
+              Cancel
+            </button>
             <div className="comments">
-              <h2 className="title is-5">Comments</h2>
               {comments.map((comment) => (
                 <div key={comment.id} className="comment-container">
                   <div className="comment">
@@ -182,14 +202,17 @@ const Post = (props) => {
           </section>
           <footer className="modal-card-foot">
             <div className="buttons">
-              <button className="button is-success mt-1" onClick={postComment}>
-                Post
+              <button
+                className="button is-ghost mt-1"
+                onClick={() => decreaseCommentPage()}
+              >
+                Previous
               </button>
               <button
                 className="button is-ghost mt-1"
-                onClick={() => setCommentIsOpen(false)}
+                onClick={() => increaseCommentPage()}
               >
-                Cancel
+                Next
               </button>
             </div>
           </footer>
