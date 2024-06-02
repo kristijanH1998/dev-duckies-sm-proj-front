@@ -1,5 +1,4 @@
 import  { useState, useEffect } from 'react';
-import Post from "../../app-wide-components/post.jsx"
 import ProfileNav from "./ProfileNav.jsx"
 import "./styling.scss"
 import axios from 'axios'
@@ -11,15 +10,40 @@ export default function ProfilePage() {
   const [bio, setBio] = useState("");
   const [userInfo, setUserInfo] = useState({});
   const [accountInfo, setAccountInfo] = useState({});
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     //get active user's account information
     axios.get(`http://localhost:8080/profile`)
-    .then(res => {setUserInfo(res.data.user_info); setAccountInfo(res.data)})
+    .then(res => {
+      setUserInfo(res.data.user_info); 
+      setAccountInfo(res.data);
+    })
     .catch(err => console.log(err))
   }, []);
 
-//Controls the state for editing Bio
+  useEffect(() => {
+    if(accountInfo.username) {
+      axios.get(`http://localhost:8080/posts/user/${accountInfo.username}/${page}`)
+      .then(res => {setPosts(res.data)})
+      .catch(err => {console.log(err.data)});
+    }
+  }, [page, accountInfo])
+
+  const increasePage = () => {
+    if (posts.length === 5) {
+      setPage(page + 1);
+    }
+  };
+
+  const decreasePage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  //Controls the state for editing Bio
   const handleBioClick = () => {
     setIsEditing(true); // Activate editing mode when the bio is clicked
   };
@@ -125,24 +149,33 @@ useEffect(() => {
         </div>
         <div className= "container ">
             <div id="feed-background"className=" box is-scrollable m-0" style={{maxHeight:"450px", overflow:"scroll"}}>
-            <Post
-            user="Tommy"
-            postContent="Testing 123"
-            date="10/3/24"
-            time="13:14"
-          />
-          <Post
-            user="Jessie"
-            postContent="Testing 123"
-            date="10/3/24"
-            time="13:14"
-          />
-          <Post
-            user="Albert"
-            postContent="Testing 123"
-            date="10/3/24"
-            time="13:14"
-          />
+              <div className= "is-size-2" style={{margin: "5px"}}>
+                <b>Posts: </b>
+              </div>
+            {posts.map((post) => {
+                return (
+                  <div className="box" key={post._id}>
+                    <div className="content">
+                      <p>{post.post_content}</p>
+                      <time>
+                      {post.post_timestamp.substr(0, 10)} 
+                      </time> <br></br>
+                      <i className="fas fa-comment"><p>{post.post_comment_count}</p></i>
+                      <i className="fas fa-heart"><p>{post.post_like_count}</p></i>
+                    </div>
+                  </div>        
+                )
+              })}
+              <button
+                className="button is-ghost mt-1"
+                onClick={() => {decreasePage()}}>
+                Previous
+              </button>
+              <button
+                className="button is-ghost mt-1"
+                onClick={() => {increasePage()}}>
+                Next
+              </button>
             </div>
           </div>
         </div>
