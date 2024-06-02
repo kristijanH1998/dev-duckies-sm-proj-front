@@ -1,0 +1,40 @@
+.comment-container {
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 1px solid ;
+    border-radius: 8px;
+  }
+  
+  .comment {
+    display: flex;
+    align-items: flex-start; /* Align items at the start */
+  }
+  
+  .comment .media-left {
+    margin-right: 1em;
+  }
+  
+  .comment .media-left img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+  
+  .comment .media-content {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .comment .media-content .username {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  .comment .media-content p {
+    margin: 0;
+  }
+  
+  .username {
+      color: white;
+  }

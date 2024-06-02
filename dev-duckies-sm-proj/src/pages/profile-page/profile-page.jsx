@@ -2,6 +2,7 @@ import  { useState, useEffect } from 'react';
 import ProfileNav from "./ProfileNav.jsx"
 import "./styling.scss"
 import axios from 'axios'
+import Post from "../../app-wide-components/post.jsx";
 
 axios.defaults.withCredentials = true;
 
@@ -29,7 +30,7 @@ export default function ProfilePage() {
       .then(res => {setPosts(res.data)})
       .catch(err => {console.log(err.data)});
     }
-  }, [page, accountInfo])
+  }, [page, accountInfo, posts])
 
   const increasePage = () => {
     if (posts.length === 5) {
@@ -152,20 +153,19 @@ useEffect(() => {
               <div className= "is-size-2" style={{margin: "5px"}}>
                 <b>Posts: </b>
               </div>
-            {posts.map((post) => {
-                return (
-                  <div className="box" key={post._id}>
-                    <div className="content">
-                      <p>{post.post_content}</p>
-                      <time>
-                      {post.post_timestamp.substr(0, 10)} 
-                      </time> <br></br>
-                      <i className="fas fa-comment"><p>{post.post_comment_count}</p></i>
-                      <i className="fas fa-heart"><p>{post.post_like_count}</p></i>
-                    </div>
-                  </div>        
-                )
-              })}
+            {posts.map((post) => (
+                <Post
+                  key={post._id}
+                  username={accountInfo.username}
+                  postContent={post.post_content}
+                  date={post.post_timestamp.substr(0, 10)}
+                  time={post.post_timestamp.substr(11, 8)}
+                  profilePic={userInfo.profile_picture}
+                  likeCount={post.post_like_count}
+                  commentCount={post.post_comment_count}
+                  id={post._id}
+                />
+              ))}
               <button
                 className="button is-ghost mt-1"
                 onClick={() => {decreasePage()}}>
