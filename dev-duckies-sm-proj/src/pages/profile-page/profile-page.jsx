@@ -78,9 +78,9 @@ useEffect(() => {
     <>
       <div className="card ">
         {/* Navbar and user profile */}
-        <ProfileNav/>
+        {/* <ProfileNav/> */}
         <div className="upper-section card">
-          <div id="header" className="container ">
+          <div id="header" className="container" style={{overflow:"scroll", height: "50vh"}}>
             <div id="profile-pic-and-username" className="block">
             <figure className="image is-128x128 is-square mr-3 ml-3" style={{ objectFit: 'cover', width: '128px', height: '128px' }}>
               <img 
@@ -148,9 +148,9 @@ useEffect(() => {
           </div>
           </div> 
         </div>
-        <div className= "container ">
-            <div id="feed-background"className=" box is-scrollable m-0" style={{maxHeight:"450px", overflow:"scroll"}}>
-              <div className= "is-size-2" style={{margin: "5px"}}>
+        <div className= "container " style={{height: "50vh", overflow:"scroll"}}>
+            <div id="feed-background" className=" box is-scrollable m-1">
+              <div className= "is-size-2">
                 <b>Posts: </b>
               </div>
             {posts.map((post) => (
