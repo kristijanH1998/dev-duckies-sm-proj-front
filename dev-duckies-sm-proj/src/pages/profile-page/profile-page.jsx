@@ -3,6 +3,7 @@ import ProfileNav from "./ProfileNav.jsx"
 import "./styling.scss"
 import axios from 'axios'
 import Post from "../../app-wide-components/post.jsx";
+import '@fortawesome/fontawesome-free/css/all.css';
 
 axios.defaults.withCredentials = true;
 
@@ -105,10 +106,6 @@ useEffect(() => {
           <p>Email: {accountInfo.email ? accountInfo.email : "N/A"}</p>
           <p>Member Since: {userInfo.datetime_created ? userInfo.datetime_created.substr(0, 10) : "N/A"}</p>
           </div>
-          <p>First Name: {userInfo.first_name ? userInfo.first_name : "N/A"}</p>
-          <p>Last Name: {userInfo.last_name ? userInfo.last_name : "N/A"}</p>
-          <p>Country: {userInfo.country ? userInfo.country : "N/A"}</p>
-          <p>Birthday: {userInfo.date_of_birth ? userInfo.date_of_birth.substr(0, 10) : "N/A"}</p>
           <div id="bio-logic">
             {isEditing ? (
               <div id="text-area">
@@ -120,28 +117,60 @@ useEffect(() => {
                   rows={4}
                   cols={50}
                   style={{ textAlign: 'center'}}
+                  placeholder='First Name:'
+                />
+                <textarea
+                className= " bio-textarea"
+                  value={bio}
+                  onChange={handleBioChange}
+                  rows={4}
+                  cols={50}
+                  style={{ textAlign: 'center'}}
+                  placeholder='Last Name:'
+                />
+                <textarea
+                className= " bio-textarea"
+                  value={bio}
+                  onChange={handleBioChange}
+                  rows={4}
+                  cols={50}
+                  style={{ textAlign: 'center'}}
+                  placeholder='Country:'
+                />
+                <textarea
+                className= " bio-textarea"
+                  value={bio}
+                  onChange={handleBioChange}
+                  rows={4}
+                  cols={50}
+                  style={{ textAlign: 'center'}}
+                  placeholder='Birthday:'
+                />
+                <textarea
+                className= " bio-textarea"
+                  value={bio}
+                  onChange={handleBioChange}
+                  rows={4}
+                  cols={50}
+                  style={{ textAlign: 'center'}}
+                  placeholder='Biography:'
                 />
                 <div id="text-area-save">
-                <button className="button mt-0"type="submit">Save</button> 
+                  <button className="button mt-0"type="submit">Save</button> 
                 </div>
               </form>
               </div>)
-             : bio && bio.trim() !== '' ? (
+             : (
               <>
-                <div className="bio-and-button">
-                  <div className="content bio-text">
-                  {bio}
-                  </div>
-                  <button onClick={handleBioClick}  className="edit-bio button" style={{ margin: 0 }}>Edit Bio</button>
-                </div>
-              </>
-            ) : (
-              <>
+                <p>First Name: {userInfo.first_name ? userInfo.first_name : "N/A"}</p>
+                <p>Last Name: {userInfo.last_name ? userInfo.last_name : "N/A"}</p>
+                <p>Country: {userInfo.country ? userInfo.country : "N/A"}</p>
+                <p>Birthday: {userInfo.date_of_birth ? userInfo.date_of_birth.substr(0, 10) : "N/A"}</p>
                 <div className="bio-and-button card-content">
                   <div className="content" style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
                     Biography: {userInfo.biography ? userInfo.biography : "N/A"}
                   </div>
-                  <button onClick={handleBioClick} className="edit-bio button" style={{ margin: 0 }}>Edit Bio</button>
+                  <button onClick={handleBioClick} className="edit-bio button" style={{ marginTop: "1rem", marginBottom: "1rem"}}><i className="far fa-edit"></i></button>
                 </div>
               </>
             )}
