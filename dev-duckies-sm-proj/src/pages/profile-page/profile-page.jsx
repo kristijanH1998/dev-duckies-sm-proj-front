@@ -75,37 +75,6 @@ export default function ProfilePage() {
     setNewUserInfo({});
   };
 
-useEffect(() => {
-  // Set up onchange event for the input file element
-  // let inputFile = document.getElementById("input-file");
-  // // if (inputFile) {
-  //   inputFile.onchange = function() {
-  //     let reader = new FileReader();
-  //     let base64String = "";
-  //     reader.onload = function () {
-  //       base64String = reader.result.replace("data:", "")
-  //           .replace(/^.+,/, "");
-  //       console.log(base64String);
-  //   }
-  //   reader.readAsDataURL(inputFile);
-
-
-
-
-
-
-
-
-      // const profilePic = document.getElementById("profile-pic");
-      // profilePic.src = URL.createObjectURL(inputFile.files[0]);
-      // console.log(profilePic.src)
-      
-
-      
-    // };
-  // }
-}, []); // Empty dependency array ensures the effect runs only once after mounting
-
   function imageUploaded() {
     let file = document.getElementById("input-file")['files'][0];
     let reader = new FileReader();
