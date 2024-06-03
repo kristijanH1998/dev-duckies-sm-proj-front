@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import ProfileNav from "./ProfileNav.jsx"
+// import ProfileNav from "./ProfileNav.jsx"
 import "./styling.scss"
 import axios from 'axios'
 import Post from "../../app-wide-components/post.jsx";
@@ -14,6 +14,7 @@ export default function ProfilePage() {
   const [accountInfo, setAccountInfo] = useState({});
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
+  const [dateInputType, setDateInputType] = useState('text');
 
   useEffect(() => {
     //get active user's account information
@@ -147,14 +148,15 @@ useEffect(() => {
                   style={{ textAlign: 'center'}}
                   placeholder='Country:'
                 />
-                <textarea
+                <input
+                  type={dateInputType} 
+                  onFocus={() => setDateInputType('date')}
+                  onBlur={() => setDateInputType('text')}
+                  placeholder="Birthday:"
                   id="date_of_birth"
                   className= "edit-textarea"
                   onChange={handleUserInfoChange}
-                  rows={4}
-                  cols={50}
-                  style={{ textAlign: 'center'}}
-                  placeholder='Birthday (YYYY-MM-DD):'
+                  style={{ textAlign: 'center', marginLeft: '0px', color: 'black', backgroundColor: 'white'}}
                 />
                 <textarea
                   id="biography"
