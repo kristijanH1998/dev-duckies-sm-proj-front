@@ -18,7 +18,7 @@
     padding-left: 5%;
   }}
 
- #bio-logic{
+ #edit-logic{
     display:flex;
     flex-direction:column;
     flex-wrap:wrap;
@@ -29,7 +29,7 @@
     }
   
  }
-.bio-and-button{
+.userInfo-and-button{
   display:flex;
   
   flex-direction:column;
@@ -41,11 +41,6 @@
   }
   
 }
-.bio-text{
-  display:flex;
-  text-align:center;
-}
-
 .card-content{
   display:flex;
   flex-direction:column;
@@ -57,7 +52,7 @@
   }
 }
 
-.bio-textarea{
+.edit-textarea{
   width:200px;
   height:40px;
   resize:none;
@@ -65,7 +60,7 @@
   border-radius: 10px;
   
 }
-.bio-textarea :focus{
+.edit-textarea :focus{
   width:200px;
   height:40px;
   resize:none;
@@ -98,7 +93,7 @@
   justify-content:center;
 }
 
-.edit-bio{
+.edit-userInfo{
   flex:0 0 auto;
 }
 

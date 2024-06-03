@@ -9,7 +9,7 @@ axios.defaults.withCredentials = true;
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false); // State to track if editing mode is active
-  const [bio, setBio] = useState("");
+  const [newUserInfo, setNewUserInfo] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [accountInfo, setAccountInfo] = useState({});
   const [posts, setPosts] = useState([]);
@@ -45,20 +45,19 @@ export default function ProfilePage() {
     }
   };
 
-  //Controls the state for editing Bio
-  const handleBioClick = () => {
-    setIsEditing(true); // Activate editing mode when the bio is clicked
+  //Controls the state for editing user info
+  const handleEditClick = () => {
+    setIsEditing(true); // Activate editing mode when the user info is clicked
   };
-  const handleBioChange = (event) => {
-    setBio(event.target.value);
+  const handleUserInfoChange = (event) => {
+    setNewUserInfo(event.target.value);
   };
-//Upon submitting Bio it is saved to database and IsEditingUser is set to false.
-  const handleBioSubmit = (event) => {
+//Upon submitting user info it is saved to database and IsEditingUser is set to false.
+  const handleUserInfoSubmit = (event) => {
     event.preventDefault();
-    localStorage.setItem('bio',bio)
     setIsEditing(false);
-    alert('Bio saved!') // Deactivate editing mode when the form is submitted
-    // Add logic here to save the updated bio to the backend
+    alert('User info saved!') // Deactivate editing mode when the form is submitted
+    // Add logic here to save the updated user info to the backend
   };
 
 useEffect(() => {
@@ -106,50 +105,50 @@ useEffect(() => {
           <p>Email: {accountInfo.email ? accountInfo.email : "N/A"}</p>
           <p>Member Since: {userInfo.datetime_created ? userInfo.datetime_created.substr(0, 10) : "N/A"}</p>
           </div>
-          <div id="bio-logic">
+          <div id="edit-logic">
             {isEditing ? (
               <div id="text-area">
-              <form onSubmit={handleBioSubmit}>
+              <form onSubmit={handleUserInfoSubmit}>
                 <textarea
-                className= " bio-textarea"
-                  value={bio}
-                  onChange={handleBioChange}
+                className= "edit-textarea"
+                  value={newUserInfo}
+                  onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
                   style={{ textAlign: 'center'}}
                   placeholder='First Name:'
                 />
                 <textarea
-                className= " bio-textarea"
-                  value={bio}
-                  onChange={handleBioChange}
+                className= "edit-textarea"
+                  value={newUserInfo}
+                  onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
                   style={{ textAlign: 'center'}}
                   placeholder='Last Name:'
                 />
                 <textarea
-                className= " bio-textarea"
-                  value={bio}
-                  onChange={handleBioChange}
+                className= "edit-textarea"
+                  value={newUserInfo}
+                  onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
                   style={{ textAlign: 'center'}}
                   placeholder='Country:'
                 />
                 <textarea
-                className= " bio-textarea"
-                  value={bio}
-                  onChange={handleBioChange}
+                className= "edit-textarea"
+                  value={newUserInfo}
+                  onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
                   style={{ textAlign: 'center'}}
-                  placeholder='Birthday:'
+                  placeholder='Birthday (YYYY-MM-DD):'
                 />
                 <textarea
-                className= " bio-textarea"
-                  value={bio}
-                  onChange={handleBioChange}
+                className= "edit-textarea"
+                  value={newUserInfo}
+                  onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
                   style={{ textAlign: 'center'}}
@@ -162,16 +161,32 @@ useEffect(() => {
               </div>)
              : (
               <>
-                <p>First Name: {userInfo.first_name ? userInfo.first_name : "N/A"}</p>
-                <p>Last Name: {userInfo.last_name ? userInfo.last_name : "N/A"}</p>
-                <p>Country: {userInfo.country ? userInfo.country : "N/A"}</p>
-                <p>Birthday: {userInfo.date_of_birth ? userInfo.date_of_birth.substr(0, 10) : "N/A"}</p>
-                <div className="bio-and-button card-content">
+                <div className="userInfo-and-button card-content">
+                  <div className="content" style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
+                    First Name: {userInfo.first_name ? userInfo.first_name : "N/A"}
+                  </div>
+                </div>
+                <div className="userInfo-and-button card-content">
+                  <div className="content" style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
+                    Last Name: {userInfo.last_name ? userInfo.last_name : "N/A"}
+                  </div>
+                </div>
+                <div className="userInfo-and-button card-content">
+                  <div className="content" style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
+                    Country: {userInfo.country ? userInfo.country : "N/A"}
+                  </div>
+                </div>               
+                <div className="userInfo-and-button card-content">
+                  <div className="content" style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
+                    Birthday: {userInfo.date_of_birth ? userInfo.date_of_birth.substr(0, 10) : "N/A"}
+                  </div>
+                </div>       
+                <div className="userInfo-and-button card-content">
                   <div className="content" style={{ wordWrap: "break-word", whiteSpace: "normal" }}>
                     Biography: {userInfo.biography ? userInfo.biography : "N/A"}
                   </div>
-                  <button onClick={handleBioClick} className="edit-bio button" style={{ marginTop: "1rem", marginBottom: "1rem"}}><i className="far fa-edit"></i></button>
                 </div>
+                <button onClick={handleEditClick} className="edit-userInfo button" style={{ marginTop: "1rem", marginBottom: "1rem"}}><i className="far fa-edit"></i></button>
               </>
             )}
           </div>
