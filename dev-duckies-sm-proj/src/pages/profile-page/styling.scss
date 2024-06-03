@@ -1,0 +1,118 @@
+@use "bulma/sass/utilities/mixins";
+
+.upper-section{
+  @include mixins.from(769px){
+    padding-left: 2%;
+  }
+  
+}
+#header{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    background-color: var(--background-color);
+  @include mixins.from(769px) {
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding-left: 5%;
+  }}
+
+ #edit-logic{
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    align-items:center;
+    padding-bottom: 10px;
+    @include mixins.from(769px){
+      align-items: center;
+    }
+  
+ }
+.userInfo-and-button{
+  display:flex;
+  
+  flex-direction:column;
+  align-items:center;
+  @include mixins.from(769px){
+  padding-left:2%;
+  
+  max-width:200px;
+  }
+  
+}
+.card-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width: 300px;
+  padding:0;
+  @include mixins.from(769px){
+    max-width: 250px;
+  }
+}
+
+.edit-textarea{
+  width:200px;
+  height:40px;
+  resize:none;
+  border:solid gray 1px;
+  border-radius: 10px;
+  
+}
+.edit-textarea :focus{
+  width:200px;
+  height:40px;
+  resize:none;
+  border:none;
+}
+
+#text-area form {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#text-area form textarea, #text-area form input {
+  margin-bottom: 5px;
+}
+
+#text-area-save{
+  display:flex;
+  justify-content:center;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+#feed-background{
+  background-color: var(--profile-feed-background) ;
+}
+
+.is-size-3{
+  display:flex;
+  justify-content:center;
+}
+
+.edit-userInfo{
+  flex:0 0 auto;
+}
+
+.upper-section{
+    margin-bottom: 0px;
+}
+
+#profile-pic-and-username { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+}
+
+input::placeholder, textarea::placeholder {
+  color: darkgrey;
+}
