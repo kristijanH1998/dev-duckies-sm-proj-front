@@ -50,18 +50,25 @@ export default function ProfilePage() {
     setIsEditing(true); // Activate editing mode when the user info is clicked
   };
   const handleUserInfoChange = (event) => {
-    if(event.target.value.trim() != '') {
-      setNewUserInfo(newUserInfo => ({...newUserInfo, [event.target.id]: event.target.value}));
-    }        
+      setNewUserInfo(newUserInfo => ({...newUserInfo, [event.target.id]: event.target.value}));   
   };
-//Upon submitting user info it is saved to database and IsEditingUser is set to false.
+  //Upon submitting user info it is saved to database and IsEditingUser is set to false.
   const handleUserInfoSubmit = (event) => {
     event.preventDefault();
     setIsEditing(false);
-    console.log(newUserInfo)
-    setNewUserInfo({});
     alert('User info saved!') // Deactivate editing mode when the form is submitted
+    for(let property in newUserInfo) {
+      if(newUserInfo[property].trim() === ''){
+        delete newUserInfo[property];
+      }
+    }
+    console.log(newUserInfo)
+
     // Add logic here to save the updated user info to the backend
+
+
+    setNewUserInfo({});
+
   };
 
 useEffect(() => {
@@ -116,7 +123,6 @@ useEffect(() => {
                 <textarea
                   id="first_name"
                   className= "edit-textarea"
-                  value={newUserInfo.first_name}
                   onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
@@ -126,7 +132,6 @@ useEffect(() => {
                 <textarea
                   id="last_name"
                   className= "edit-textarea"
-                  value={newUserInfo.last_name}
                   onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
@@ -136,7 +141,6 @@ useEffect(() => {
                 <textarea
                   id="country"
                   className= "edit-textarea"
-                  value={newUserInfo.country}
                   onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
@@ -146,7 +150,6 @@ useEffect(() => {
                 <textarea
                   id="date_of_birth"
                   className= "edit-textarea"
-                  value={newUserInfo.date_of_birth}
                   onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
@@ -156,7 +159,6 @@ useEffect(() => {
                 <textarea
                   id="biography"
                   className= "edit-textarea"
-                  value={newUserInfo.biography}
                   onChange={handleUserInfoChange}
                   rows={4}
                   cols={50}
