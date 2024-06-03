@@ -16,7 +16,11 @@ export default function CreatePost(){
   function sharePost(event) {
     event.preventDefault()
     axios.post('http://localhost:8080/posts', {post_content})
-    .then(res => {console.log(res); setPost_content('')})
+    .then(res => {
+      console.log(res)
+      window.alert("Post has been shared")
+      setPost_content("");
+    })
     .catch(error => {console.log(error.response.data.error)})
   }
 
