@@ -23,7 +23,7 @@ export default function ProfilePage() {
       setUserInfo(res.data.user_info); 
       setAccountInfo(res.data);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err.data))
   }, []);
 
   useEffect(() => {
@@ -63,28 +63,74 @@ export default function ProfilePage() {
         delete newUserInfo[property];
       }
     }
-    console.log(newUserInfo)
-
-    // Add logic here to save the updated user info to the backend
-
-
+    axios.put(`http://localhost:8080/profile`, newUserInfo)
+      .then(res => {
+        axios.get(`http://localhost:8080/profile`)
+        .then(res => {
+          setUserInfo(res.data.user_info); 
+        })
+        .catch(err => console.log(err.data))
+      })
+      .catch(error => console.log(error.response.data.error));
     setNewUserInfo({});
-
   };
 
 useEffect(() => {
   // Set up onchange event for the input file element
-  let inputFile = document.getElementById("input-file");
-  if (inputFile) {
-    inputFile.onchange = function() {
-      const profilePic = document.getElementById("profile-pic");
-      profilePic.src = URL.createObjectURL(inputFile.files[0]);
-      // Save the profile picture URL to local storage
-      localStorage.setItem("profilePic", JSON.stringify(profilePic.src));
-      alert("Profile Picture Saved");
-    };
-  }
+  // let inputFile = document.getElementById("input-file");
+  // // if (inputFile) {
+  //   inputFile.onchange = function() {
+  //     let reader = new FileReader();
+  //     let base64String = "";
+  //     reader.onload = function () {
+  //       base64String = reader.result.replace("data:", "")
+  //           .replace(/^.+,/, "");
+  //       console.log(base64String);
+  //   }
+  //   reader.readAsDataURL(inputFile);
+
+
+
+
+
+
+
+
+      // const profilePic = document.getElementById("profile-pic");
+      // profilePic.src = URL.createObjectURL(inputFile.files[0]);
+      // console.log(profilePic.src)
+      
+
+      
+    // };
+  // }
 }, []); // Empty dependency array ensures the effect runs only once after mounting
+
+  function imageUploaded() {
+    let file = document.getElementById("input-file")['files'][0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    let base64String = "";
+    reader.onload = function () {
+      base64String = reader.result.replace("data:", "")
+          .replace(/^.+,/, "");
+      
+
+      axios.put(`http://localhost:8080/profile`, {
+        profile_picture : base64String
+      }).then(res => {
+          axios.get(`http://localhost:8080/profile`)
+          .then(res => {
+            setUserInfo(res.data.user_info); 
+          })
+          .catch(err => console.log(err.data))
+        })
+        .catch(error => console.log(error.response.data.error));      
+      alert("Profile Picture Saved");
+    }
+    
+  }
+
 
   return (
     <>
@@ -103,7 +149,7 @@ useEffect(() => {
             </figure>
           <button className= "button is-small mt-3 p-0">
             <label className="" htmlFor="input-file" style={{border:"none"}}>
-            <input className="file-input" id= "input-file" type="file" accept="image/jpeg, image/png, image/jpg"/>
+            <input className="file-input" id="input-file" type="file" accept="image/jpeg, image/png, image/jpg" onChange={imageUploaded}/>
             <span className="file-cta" style={{border:"none"}}>
               <span className="file-icon">
               </span>

@@ -112,3 +112,7 @@
   display: flex;
   justify-content: center;
 }
+
+input::placeholder, textarea::placeholder {
+  color: darkgrey;
+}
