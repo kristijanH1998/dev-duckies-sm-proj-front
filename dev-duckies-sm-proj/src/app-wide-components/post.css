@@ -34,3 +34,8 @@
 .comment .media-content p {
   margin: 0;
 }
+
+.post-header {
+  display: flex;
+  align-items: center;
+}

@@ -2,6 +2,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import "./post.css"
 import { useState, useEffect } from 'react';
 import axios from 'axios'
+import { FaTrashCan } from "react-icons/fa6";
 
 axios.defaults.withCredentials = true;
 
@@ -120,9 +121,15 @@ const Post = (props) => {
       });
   };
 
+  function deletePost() {
+    axios.delete(`http://localhost:8080/posts/${props.id}/delete`)
+    .then(res => {console.log(res)})
+    .catch(error => {console.log(error.response.data.error)})
+  }
+
   return (
     <div className="box">
-      <div className="media m-auto">
+      <div className="media m-auto post-header">
         <div className="media-left">
           <figure className="image is-48x48 is-square mr-5 ml-3">
             <img
@@ -134,6 +141,9 @@ const Post = (props) => {
         </div>
         <div className="media-content">
           <p className="title is-4">{props.username}</p>
+        </div>
+        <div className='post-editing'>
+          <button onClick={deletePost}><FaTrashCan /></button>
         </div>
       </div>
       <div className="content">
