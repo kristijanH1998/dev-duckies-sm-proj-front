@@ -125,6 +125,13 @@ const Post = (props) => {
     .catch(error => {console.log(error.response.data.error)})
   }
 
+  function deleteComment(event) {
+    let commentId = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-tag');     
+    axios.delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
+    .then(res => {console.log(res)})
+    .catch(error => {console.log(error.response.data.error)})
+  }
+
   function updatePostClick() {
     setIsEditing(true);
   }
@@ -256,7 +263,7 @@ const Post = (props) => {
             </button>
             <div className="comments">
               {comments.map((comment) => (
-                <div key={comment.id} className="comment-container">
+                <div data-tag={comment._id} key={comment.id} className="comment-container">
                   <div className="comment">
                     <div className="media-left">
                       <figure className="image is-48x48 is-square">
@@ -270,6 +277,9 @@ const Post = (props) => {
                     <div className="media-content">
                       <p className="username">{comment.username}</p>
                       <p>{comment.content}</p>
+                    </div>
+                    <div className='post-editing'>
+                      <button className="fa-xl" onClick={deleteComment}><FaTrashCan /></button>
                     </div>
                   </div>
                 </div>
