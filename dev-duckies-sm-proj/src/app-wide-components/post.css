@@ -35,8 +35,9 @@
   margin: 0;
 }
 
-.username {
-    color: white;
+.post-header {
+  display: flex;
+  align-items: center;
 }
 
 .post-header {
