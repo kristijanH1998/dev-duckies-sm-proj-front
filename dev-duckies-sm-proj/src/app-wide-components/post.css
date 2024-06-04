@@ -39,3 +39,11 @@
   display: flex;
   align-items: center;
 }
+
+.edit-post {
+  background: whitesmoke;
+  color: black;
+  width: 98%;
+  padding: 10px 10px 10px 10px;
+  overflow-wrap: break-word;
+}
