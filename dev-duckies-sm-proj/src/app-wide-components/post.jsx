@@ -121,6 +121,23 @@ const Post = (props) => {
     .catch(error => {console.log(error.response.data.error)})
   }
 
+  function deleteComment(event) {
+    // let commentId = event.target.key;
+    // console.log(commentId)
+
+    // let a = event.currentTarget.parentElement.parentElement.parentElement.classList.getAttribute('data-tag');
+    let a = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-tag'); 
+    // console.log(comments);
+    console.log(a)
+
+
+
+    
+    // axios.delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
+    // .then(res => {console.log(res)})
+    // .catch(error => {console.log(error.response.data.error)})
+  }
+
   return (
     <div className="box">
       <div className="media m-auto post-header">
@@ -212,7 +229,7 @@ const Post = (props) => {
             </button>
             <div className="comments">
               {comments.map((comment) => (
-                <div key={comment.id} className="comment-container">
+                <div data-tag={comment.content} key={comment.id} className="comment-container">
                   <div className="comment">
                     <div className="media-left">
                       <figure className="image is-48x48 is-square">
@@ -226,6 +243,9 @@ const Post = (props) => {
                     <div className="media-content">
                       <p className="username">{comment.username}</p>
                       <p>{comment.content}</p>
+                    </div>
+                    <div className='post-editing'>
+                      <button className="fa-xl" onClick={deleteComment}><FaTrashCan /></button>
                     </div>
                   </div>
                 </div>

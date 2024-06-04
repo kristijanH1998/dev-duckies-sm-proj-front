@@ -7,7 +7,7 @@
 
 .comment {
   display: flex;
-  align-items: flex-start; /* Align items at the start */
+  align-items: center; /* Align items at the start */
 }
 
 .comment .media-left {
