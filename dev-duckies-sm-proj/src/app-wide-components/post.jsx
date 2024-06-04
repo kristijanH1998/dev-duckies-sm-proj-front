@@ -12,12 +12,19 @@ const Post = (props) => {
   const [likeUsers, setLikeUsers] = useState([]);
   const [comments, setComments] = useState([]);
   const [commentPage, setCommentPage] = useState(1);
+  const [likePage, setLikePage] = useState(1);
 
   useEffect(() => {
     if (commentIsOpen) {
       fetchComments(commentPage);
     }
   }, [commentIsOpen, commentPage]);
+
+   useEffect(() => {
+     if (likeIsOpen) {
+       showLikes(props.id, likePage);
+     }
+   }, [likeIsOpen, likePage]);
 
   const fetchComments = (page) => {
     axios
@@ -71,6 +78,18 @@ const Post = (props) => {
       })
       .catch((err) => console.log(err));
   }
+
+  const increaseLikePage = () => {
+    if (likeUsers.length === 5) {
+      setLikePage(likePage + 1);
+    }
+  };
+
+  const decreaseLikePage = () => {
+    if (likePage > 1) {
+      setLikePage(likePage - 1);
+    }
+  };
 
   const postComment = () => {
     if (commentContent.trim() === "") {
@@ -169,7 +188,10 @@ const Post = (props) => {
               value={commentContent}
               onChange={(e) => setCommentContent(e.target.value)}
             ></textarea>
-            <button className="button is-success mt-5 mb-5" onClick={postComment}>
+            <button
+              className="button is-success mt-5 mb-5"
+              onClick={postComment}
+            >
               Post
             </button>
             <button
@@ -263,14 +285,14 @@ const Post = (props) => {
               Close
             </button>
             <button
-              className="button is-secondary mx-6 mt-0"
-              onClick={() => setLikeIsOpen(false)}
+              className="button is-ghost mt-1"
+              onClick={() => decreaseLikePage()}
             >
-              Prev
+              Previous
             </button>
             <button
-              className="button is-secondary mx-6 mt-0"
-              onClick={() => setLikeIsOpen(false)}
+              className="button is-ghost mt-1"
+              onClick={() => increaseLikePage()}
             >
               Next
             </button>

@@ -33,7 +33,7 @@ function PublicFeed() {
           return err.code;
         });
     }
-  }, [posts, page]);
+  }, [page]);
 
   return (
     <div className="App">

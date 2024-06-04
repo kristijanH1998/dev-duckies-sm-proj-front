@@ -32,7 +32,7 @@ export default function ProfilePage() {
       .then(res => {setPosts(res.data)})
       .catch(err => {console.log(err.data)});
     }
-  }, [page, accountInfo, posts])
+  }, [page, accountInfo])
 
   const increasePage = () => {
     if (posts.length === 5) {
