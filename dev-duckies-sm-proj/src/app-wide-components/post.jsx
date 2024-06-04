@@ -17,7 +17,7 @@ const Post = (props) => {
   const [likePage, setLikePage] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [newPostContent, setNewPostContent] = useState();
-  const [postContent, setPostContent] = useState();
+  const [postContent, setPostContent] = useState(props.postContent);
 
   useEffect(() => {
     if (commentIsOpen) {
@@ -25,11 +25,11 @@ const Post = (props) => {
     }
   }, [commentIsOpen, commentPage]);
 
-   useEffect(() => {
-     if (likeIsOpen) {
-       showLikes(props.id, likePage);
-     }
-   }, [likeIsOpen, likePage]);
+  useEffect(() => {
+    if (likeIsOpen) {
+      showLikes(props.id, likePage);
+    }
+  }, [likeIsOpen, likePage]);
 
   const fetchComments = (page) => {
     axios
@@ -142,7 +142,7 @@ const Post = (props) => {
       .then(res => {
         setPostContent(res.data.post_content); 
       })
-      .catch(err => console.log(err.data))
+      .catch(error => console.log(error.response.data.error))
       })
     .catch(error => console.log(error.response.data.error));      
     };

@@ -46,4 +46,10 @@
   width: 98%;
   padding: 10px 10px 10px 10px;
   overflow-wrap: break-word;
+  white-space: initial;
+  word-wrap: break-word;
+}
+
+.content {
+  margin-top: 10px;
 }
