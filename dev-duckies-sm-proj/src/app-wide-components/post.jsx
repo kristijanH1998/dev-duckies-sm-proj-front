@@ -3,6 +3,7 @@ import "./post.css"
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { FaTrashCan } from "react-icons/fa6";
+import { FiEdit } from "react-icons/fi";
 
 axios.defaults.withCredentials = true;
 
@@ -14,6 +15,9 @@ const Post = (props) => {
   const [comments, setComments] = useState([]);
   const [commentPage, setCommentPage] = useState(1);
   const [likePage, setLikePage] = useState(1);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newPostContent, setNewPostContent] = useState();
+  const [postContent, setPostContent] = useState(props.postContent);
 
   useEffect(() => {
     if (commentIsOpen) {
@@ -21,11 +25,11 @@ const Post = (props) => {
     }
   }, [commentIsOpen, commentPage]);
 
-   useEffect(() => {
-     if (likeIsOpen) {
-       showLikes(props.id, likePage);
-     }
-   }, [likeIsOpen, likePage]);
+  useEffect(() => {
+    if (likeIsOpen) {
+      showLikes(props.id, likePage);
+    }
+  }, [likeIsOpen, likePage]);
 
   const fetchComments = (page) => {
     axios
@@ -121,6 +125,28 @@ const Post = (props) => {
     .catch(error => {console.log(error.response.data.error)})
   }
 
+  function updatePostClick() {
+    setIsEditing(true);
+  }
+
+  const handlePostContentChange = (event) => {
+      setNewPostContent(newPostContent => ({...newPostContent, [event.target.id]: event.target.value}));
+  };
+
+  const updatePostContentSubmit = (event) => {
+    event.preventDefault();
+    setIsEditing(false);
+    axios.put(`http://localhost:8080/posts/${props.id}`, newPostContent)
+    .then(res => 
+      {axios.get(`http://localhost:8080/posts/${props.id}`)
+      .then(res => {
+        setPostContent(res.data.post_content); 
+      })
+      .catch(error => console.log(error.response.data.error))
+      })
+    .catch(error => console.log(error.response.data.error));      
+    };
+
   return (
     <div className="box">
       <div className="media m-auto post-header">
@@ -137,14 +163,32 @@ const Post = (props) => {
           <p className="title is-4">{props.username}</p>
         </div>
         <div className='post-editing'>
+          <button onClick={updatePostClick}><FiEdit /></button>
           <button onClick={deletePost}><FaTrashCan /></button>
         </div>
       </div>
       <div className="content">
-        <p>{props.postContent}</p>
-        <time>
-          {props.date} {props.time}
-        </time>
+        {isEditing ? (
+              <div id="text-area">
+              <form onSubmit={updatePostContentSubmit}>
+                <input
+                  id="post_content"
+                  className= "edit-post"
+                  onChange={handlePostContentChange}
+                />
+                <div id="text-area-save">
+                  <button className="button mt-0"type="submit">Save</button> 
+                </div>
+              </form>
+              </div>)
+            : (
+              <>
+                <p>{postContent}</p>
+                <time>
+                  {props.date} {props.time}
+                </time>
+              </>
+            )}
       </div>
       <nav className="level is-mobile">
         <div className="level-left">
