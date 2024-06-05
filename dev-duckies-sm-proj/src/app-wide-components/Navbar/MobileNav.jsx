@@ -8,7 +8,7 @@ export default function MobileNavbar() {
     >
       <div className="navbar-brand">
 
-        <NavLink to='/' className='navbar-item is-expanded is-block has-text-centered'>
+        <NavLink to='feed' className='navbar-item is-expanded is-block has-text-centered'>
           <span className="material-symbols-rounded">
             home
           </span>

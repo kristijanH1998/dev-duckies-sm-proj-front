@@ -126,20 +126,41 @@ const Post = (props) => {
   };
 
   function deletePost() {
-    axios.delete(`http://localhost:8080/posts/${props.id}/delete`)
-    .then(res => {console.log(res)})
-    .catch(error => {console.log(error.response.data.error)})
+    axios
+      .delete(`http://localhost:8080/posts/${props.id}/delete`)
+      .then((res) => {
+        console.log(res);
+        props.onDelete(props.id);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 403) {
+          alert("You do not have permission to delete this post.");
+        } else {
+          console.log(error.response.data.error);
+        }
+      });
   }
 
   function deleteComment(event) {
-    let commentId = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-tag');     
-    console.log(commentId)
-    axios.delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
-    .then(res => {
-      setCommentCount(commentCount - 1);
-      fetchComments(commentPage);
-      console.log(res)})
-    .catch(error => {console.log(error.response.data.error)})
+    let commentId =
+      event.currentTarget.parentElement.parentElement.parentElement.getAttribute(
+        "data-tag"
+      );
+    console.log(commentId);
+    axios
+      .delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
+      .then((res) => {
+        setCommentCount(commentCount - 1);
+        fetchComments(commentPage);
+        console.log(res);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 403) {
+          alert("You do not have permission to delete this comment.");
+        } else {
+          console.log(error.response.data.error);
+        }
+      });
   }
 
   function updatePostClick() {
@@ -153,16 +174,24 @@ const Post = (props) => {
   const updatePostContentSubmit = (event) => {
     event.preventDefault();
     setIsEditing(false);
-    axios.put(`http://localhost:8080/posts/${props.id}`, newPostContent)
-    .then(res => 
-      {axios.get(`http://localhost:8080/posts/${props.id}`)
-      .then(res => {
-        setPostContent(res.data.post_content); 
+    axios
+      .put(`http://localhost:8080/posts/${props.id}`, newPostContent)
+      .then((res) => {
+        axios
+          .get(`http://localhost:8080/posts/${props.id}`)
+          .then((res) => {
+            setPostContent(res.data.post_content);
+          })
+          .catch((error) => console.log(error.response.data.error));
       })
-      .catch(error => console.log(error.response.data.error))
-      })
-    .catch(error => console.log(error.response.data.error));      
-    };
+      .catch((error) => {
+        if (error.response && error.response.status === 403) {
+          alert("You do not have permission to edit this post.");
+        } else {
+          console.log(error.response.data.error);
+        }
+      });
+  };
 
   return (
     <div className="box">
