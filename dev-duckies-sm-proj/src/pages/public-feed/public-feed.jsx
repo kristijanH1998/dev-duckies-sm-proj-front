@@ -35,6 +35,10 @@ function PublicFeed() {
     }
   }, [page]);
 
+  const handleDeletePost = (postId) => {
+    setPosts(posts.filter((post) => post.id !== postId));
+  };
+
   return (
     <div className="App">
       <Header />
@@ -52,6 +56,7 @@ function PublicFeed() {
                 likeCount={post.likeCount}
                 commentCount={post.commentCount}
                 id={post.id}
+                onDelete={handleDeletePost}
               />
             ))}
           </div>
