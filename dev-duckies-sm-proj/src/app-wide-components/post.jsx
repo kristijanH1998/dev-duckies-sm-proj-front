@@ -127,7 +127,10 @@ const Post = (props) => {
 
   function deletePost() {
     axios.delete(`http://localhost:8080/posts/${props.id}/delete`)
-    .then(res => {console.log(res)})
+    .then(res => {
+      console.log(res);
+      props.onDelete(props.id);
+    })
     .catch(error => {console.log(error.response.data.error)})
   }
 
