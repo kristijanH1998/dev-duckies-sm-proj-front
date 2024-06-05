@@ -174,16 +174,24 @@ const Post = (props) => {
   const updatePostContentSubmit = (event) => {
     event.preventDefault();
     setIsEditing(false);
-    axios.put(`http://localhost:8080/posts/${props.id}`, newPostContent)
-    .then(res => 
-      {axios.get(`http://localhost:8080/posts/${props.id}`)
-      .then(res => {
-        setPostContent(res.data.post_content); 
+    axios
+      .put(`http://localhost:8080/posts/${props.id}`, newPostContent)
+      .then((res) => {
+        axios
+          .get(`http://localhost:8080/posts/${props.id}`)
+          .then((res) => {
+            setPostContent(res.data.post_content);
+          })
+          .catch((error) => console.log(error.response.data.error));
       })
-      .catch(error => console.log(error.response.data.error))
-      })
-    .catch(error => console.log(error.response.data.error));      
-    };
+      .catch((error) => {
+        if (error.response && error.response.status === 403) {
+          alert("You do not have permission to edit this post.");
+        } else {
+          console.log(error.response.data.error);
+        }
+      });
+  };
 
   return (
     <div className="box">
