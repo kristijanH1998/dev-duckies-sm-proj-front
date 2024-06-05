@@ -15,6 +15,8 @@ const Post = (props) => {
   const [comments, setComments] = useState([]);
   const [commentPage, setCommentPage] = useState(1);
   const [likePage, setLikePage] = useState(1);
+  const [commentCount, setCommentCount] = useState(props.commentCount);
+  const [likeCount, setLikeCount] = useState(props.likeCount);
   const [isEditing, setIsEditing] = useState(false);
   const [newPostContent, setNewPostContent] = useState();
   const [postContent, setPostContent] = useState(props.postContent);
@@ -53,27 +55,29 @@ const Post = (props) => {
     }
   };
 
-  function createLike(postId) {
+  const createLike = (postId) => {
     axios
       .post(`http://localhost:8080/posts/${postId}/like`)
       .then((res1) => {
-        if (res1.status == 200) {
+        if (res1.status === 200) {
           axios
             .delete(`http://localhost:8080/posts/${postId}/delLike`)
             .then((res2) => {
+              setLikeCount(likeCount - 1);
               showLikes(postId, 1);
             })
             .catch((error) => {
               console.log(error.response.data.error);
             });
         } else {
+          setLikeCount(likeCount + 1);
           showLikes(postId, 1);
         }
       })
       .catch((error) => {
         console.log(error.response.data.error);
       });
-  }
+  };
 
   function showLikes(postId, page) {
     axios
@@ -110,6 +114,8 @@ const Post = (props) => {
         if (res.status === 201) {
           setCommentContent("");
           setCommentIsOpen(false);
+          setCommentCount(commentCount + 1);
+
           // Optionally, refresh comments or update comment count
         }
       })
@@ -127,8 +133,12 @@ const Post = (props) => {
 
   function deleteComment(event) {
     let commentId = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-tag');     
+    console.log(commentId)
     axios.delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
-    .then(res => {console.log(res)})
+    .then(res => {
+      setCommentCount(commentCount - 1);
+      fetchComments(commentPage);
+      console.log(res)})
     .catch(error => {console.log(error.response.data.error)})
   }
 
@@ -210,7 +220,7 @@ const Post = (props) => {
               </button>
             </span>
           </a>
-          <p>{props.commentCount}</p>
+          <p>{commentCount}</p>
           <a className="level-item" aria-label="like">
             <span className="icon is-small">
               <button
@@ -225,7 +235,7 @@ const Post = (props) => {
               </button>
             </span>
           </a>
-          <p>{props.likeCount}</p>
+          <p>{likeCount}</p>
         </div>
       </nav>
       <div className={`modal ${commentIsOpen ? "is-active" : ""}`}>
@@ -263,7 +273,7 @@ const Post = (props) => {
             </button>
             <div className="comments">
               {comments.map((comment) => (
-                <div data-tag={comment._id} key={comment.id} className="comment-container">
+                <div data-tag={comment._id} key={comment._id} className="comment-container">
                   <div className="comment">
                     <div className="media-left">
                       <figure className="image is-48x48 is-square">
