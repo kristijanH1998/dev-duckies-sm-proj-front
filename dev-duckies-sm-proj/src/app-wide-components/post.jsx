@@ -115,7 +115,7 @@ const Post = (props) => {
           setCommentContent("");
           setCommentIsOpen(false);
           setCommentCount(commentCount + 1);
-          fetchComments(commentPage);
+
           // Optionally, refresh comments or update comment count
         }
       })
@@ -133,8 +133,12 @@ const Post = (props) => {
 
   function deleteComment(event) {
     let commentId = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-tag');     
+    console.log(commentId)
     axios.delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
-    .then(res => {console.log(res)})
+    .then(res => {
+      setCommentCount(commentCount - 1);
+      fetchComments(commentPage);
+      console.log(res)})
     .catch(error => {console.log(error.response.data.error)})
   }
 
@@ -269,7 +273,7 @@ const Post = (props) => {
             </button>
             <div className="comments">
               {comments.map((comment) => (
-                <div data-tag={comment._id} key={comment.id} className="comment-container">
+                <div data-tag={comment._id} key={comment._id} className="comment-container">
                   <div className="comment">
                     <div className="media-left">
                       <figure className="image is-48x48 is-square">
