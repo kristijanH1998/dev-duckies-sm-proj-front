@@ -75,13 +75,18 @@ export default function Register() {
       })
       .then((res) => {
         axios.post("http://localhost:8080/auth/login", { email, password })
-      .then((res) => {
+        .then((res) => {
+          axios.put("http://localhost:8080/profile/archive")
+          .catch((error) => {
+            console.log(error.response.data.error);
+          })
+        })
+        .then((res) => {
        navigate("/home/feed"); 
       })
       .catch((error) => {
         console.log(error.response.data.error);
-      })
-        
+      }) 
       })
       .catch((error) => {
         console.log(error.response.data.error);
