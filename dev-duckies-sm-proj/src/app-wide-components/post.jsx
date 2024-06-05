@@ -126,23 +126,41 @@ const Post = (props) => {
   };
 
   function deletePost() {
-    axios.delete(`http://localhost:8080/posts/${props.id}/delete`)
-    .then(res => {
-      console.log(res);
-      props.onDelete(props.id);
-    })
-    .catch(error => {console.log(error.response.data.error)})
+    axios
+      .delete(`http://localhost:8080/posts/${props.id}/delete`)
+      .then((res) => {
+        console.log(res);
+        props.onDelete(props.id);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 403) {
+          alert("You do not have permission to delete this post.");
+        } else {
+          console.log(error.response.data.error);
+        }
+      });
   }
 
   function deleteComment(event) {
-    let commentId = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('data-tag');     
-    console.log(commentId)
-    axios.delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
-    .then(res => {
-      setCommentCount(commentCount - 1);
-      fetchComments(commentPage);
-      console.log(res)})
-    .catch(error => {console.log(error.response.data.error)})
+    let commentId =
+      event.currentTarget.parentElement.parentElement.parentElement.getAttribute(
+        "data-tag"
+      );
+    console.log(commentId);
+    axios
+      .delete(`http://localhost:8080/posts/${props.id}/comment/${commentId}`)
+      .then((res) => {
+        setCommentCount(commentCount - 1);
+        fetchComments(commentPage);
+        console.log(res);
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 403) {
+          alert("You do not have permission to delete this comment.");
+        } else {
+          console.log(error.response.data.error);
+        }
+      });
   }
 
   function updatePostClick() {
