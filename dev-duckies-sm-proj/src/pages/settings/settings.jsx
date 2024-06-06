@@ -19,16 +19,20 @@ const handleLogout = () => {
 };
 
 const handleDeleteAccount = () => {
+   const confirmDelete = window.confirm("Are you sure you want to delete your account?");
+    if (confirmDelete) {
   axios
-  .delete("http://localhost:8080/profile/delete")
-  .then((res) => {
-    alert('Profile deleted successfully.');
-    navigate("/");
-  })
-  .catch((error) => {
-    console.log(error);
-  });  
+    .delete("http://localhost:8080/profile/delete")
+    .then((res) => {
+      alert('Profile deleted successfully.');
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });  
+  }
 };
+
   return (
     <section className="section">
       <h1 className="title">Settings</h1>
