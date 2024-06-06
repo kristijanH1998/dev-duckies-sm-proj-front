@@ -4,8 +4,8 @@ export default function Sidebar() {
   return (
     <div className="cell is-hidden-mobile">
       <nav id='sidebar' className='navbar'>
-        <Link id='navbar-title'>
-          <h3 className="title is-3">Ducki</h3>
+        <Link to="feed" id='navbar-title'>
+          <h3 className="title is-3">DuckPond</h3>
         </Link>
 
         <NavLink to="feed" className='sidebar-item'>
