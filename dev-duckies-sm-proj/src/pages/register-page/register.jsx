@@ -15,6 +15,7 @@ export default function Register() {
   const [birthMonth, setBirthMonth] = useState('');
   const [birthDay, setBirthDay] = useState('');
   const [birthYear, setBirthYear] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   
   
@@ -22,7 +23,7 @@ export default function Register() {
   const usernameTest = username.length <= 12 && username.length > 0;
   
   // Checks if the passwords match
-  const passwordTest = password === confirmPassword;
+  const passwordTest = password === confirmPassword && password.length > 6;
 
   const emailTest = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z+])?$/.test(email); 
 
@@ -35,6 +36,7 @@ export default function Register() {
   // Handles input changes and saves it to state
   const handleChange = (setState) => (event) => {
     setState(event.target.value);
+    setError("");
   };
   
   // Handles form submission
@@ -52,17 +54,10 @@ export default function Register() {
         lastNameTest
       )
     ) {
-      console.log(
-        passwordTest,
-        emailTest,
-        usernameTest,
-        birthMonthTest,
-        birthDayTest,
-        birthYearTest,
-        firstNameTest,
-        lastNameTest
-      );
-      return console.log("Unable to Register!");
+      if (!passwordTest) {
+        return setError("Passwords do not match OR password is too short (7 character min)");
+      }
+      return setError("Please ensure all fields are valid.");
     }
     axios
       .post("http://localhost:8080/auth/register", {
@@ -74,21 +69,37 @@ export default function Register() {
         date_of_birth: new Date(`${birthMonth}/${birthDay}/${birthYear}`),
       })
       .then((res) => {
-        axios.post("http://localhost:8080/auth/login", { email, password })
-        .then((res) => {
-          axios.put("http://localhost:8080/profile/archive")
+        axios
+          .post("http://localhost:8080/auth/login", { email, password })
+          .then((res) => {
+            axios
+              .put("http://localhost:8080/profile/archive")
+              .catch((error) => {
+                console.log(error.response.data.error);
+              });
+          })
+          .then((res) => {
+            navigate("/home/feed");
+          })
           .catch((error) => {
             console.log(error.response.data.error);
-          })
-        })
-        .then((res) => {
-       navigate("/home/feed"); 
+          });
       })
       .catch((error) => {
-        console.log(error.response.data.error);
-      }) 
-      })
-      .catch((error) => {
+        if (error.response) {
+          if (
+            error.response.status === 400 &&
+            error.response.data.error === "User already exists..."
+          ) {
+            setError("Email is already in use.");
+          } else if (error.response.status === 400) {
+            setError("Invalid registration details.");
+          } else {
+            setError("Username is taken.");
+          }
+        } else {
+          setError("Failed to register. Please try again later.");
+        }
         console.log(error.response.data.error);
       });
   };
@@ -111,6 +122,9 @@ export default function Register() {
               <div className="box">
                 <h1 className="title is-4 has-text-centered">Register</h1>
                 <form onSubmit={handleSubmit}>
+                  {error && (
+                    <div className="notification is-danger">{error}</div>
+                  )}
                   <div className="field">
                     <label className="label">Email</label>
                     <div className="control has-icons-left">
