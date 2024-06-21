@@ -50,8 +50,17 @@ DuckPond - internship group project for Bay Valley Tech
 * Lastly, I realized that medium to large scale software projects like DuckPond are very time consuming and in order to be completed within a couple of months, they should be performed by teams of developers and engineers. The same goes for any larger full-stack application. Perhaps such projects can be finished by a single person, but that process would take considerably more time than team work would require to deliver the product and finalize all the steps in the process
 
 ## How to Run the Project
-### Frontend Installation 
 * ***Important:*** Please first follow installation instructions for the Backend part of this project, which can be found [here](https://github.com/kristijanH1998/ddsm-back-end/tree/main?tab=readme-ov-file#backend-installation). Once that is completed, proceed to Frontend installation steps described below
+
+### Frontend Installation 
+Assuming that all the steps for installing the environment for Backend part of DuckPond have been finished, the user should already have VS Code, Node.js, Git, and extensions for HTML/CSS/JavaScript installed on their machine. Next, follow these steps:
+1. Choose the location (directory) for the project's frontend repository, navigate to it with 'cd [directory-name]' terminal command and inside of it clone the project's frontend repository by running the command 'git clone https://github.com/kristijanH1998/dev-duckies-sm-proj-front.git' in your terminal
+2. Open the newly cloned repository folder in VS Code and open the Bash shell (terminal). Navigate to 'dev-duckies-sm-proj' folder by running 'cd dev-duckies-sm-proj' in your terminal
+3. Type and run the command 'npm i' to install all necessary packages (including software for Vite and React.js)
+4. If you have not already started running the server for the Backend part of the project, do that now by opening Backend repository in another VS Code window (with its own Bash terminal instance), and run it by typing 'npm run dev' in the terminal
+5. In the VS Code window for the Frontend part, type and run the command 'npm run dev' to start the local server for Vite with React. You should see this in your terminal:
+![terminal after npm run dev (frontend)](/screenshots/npm-run-dev-result-frontend.jpg?raw=true "terminal after npm run dev (frontend)")
+6. Copy the 'http://localhost:5173/' URL address and paste it in the address bar of your internet browser. You should see the DuckPond's Login page appear with entry fields for email and password:
 
 
 ## How to Use the Project
