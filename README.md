@@ -60,7 +60,40 @@ Assuming that all the steps for installing the environment for Backend part of D
 4. If you have not already started running the server for the Backend part of the project, do that now by opening Backend repository in another VS Code window (with its own Bash terminal instance), and run it by typing 'npm run dev' in the terminal
 5. In the VS Code window for the Frontend part, type and run the command 'npm run dev' to start the local server for Vite with React. You should see this in your terminal:
 ![terminal after npm run dev (frontend)](/screenshots/npm-run-dev-result-frontend.jpg?raw=true "terminal after npm run dev (frontend)")
-6. Copy the 'http://localhost:5173/' URL address and paste it in the address bar of your internet browser. You should see the DuckPond's Login page appear with entry fields for email and password:
-
+6. Copy the 'http://localhost:5173/' URL address and paste it in the address bar of your internet browser. You should see the DuckPond's Login page appear with entry fields for email and password
 
 ## How to Use the Project
+* After backend server has been run, and the frontend server has been started by pasting 'http://localhost:5173/' URL address in the address bar in the browser, you should see the Login page interface:
+![Login page](/screenshots/duckpond-login-1.jpg?raw=true "Login page")
+Here enter your email address and password if your account exists, if not create a new account by clicking 'Create Account', which will open Register page:
+![Register page](/screenshots/duckpond-signup-1.jpg?raw=true "Register page")
+Make sure to enter username that is unique (is not already used by another user), and email address that has a valid email form. Also, passwords need to match.
+* Once user signs in or creates a new account and registers, they should see the Feed page (home page):
+![Feed page](/screenshots/duckpond-feed-1.jpg?raw=true "Feed page")
+Here you can interact with posts either you posted or from other users, by liking them or commenting on them. It is also possible for any user to edit or delete posts they wrote, but not those from other users. 
+If there are more than five posts on the feed page, navigate over them by clicking on 'Previous' and 'Next' buttons.
+To like a post, click on the heart icon at the bottom left of a post card. To comment on a post, click on the message icon next to the heart icon, at the bottom left. 
+Clicking on the Comment icon will open a new comment modal:
+![Comment modal](/screenshots/duckpond-feed-3.jpg?raw=true "Comment modal")
+If there are more than five comments for the given post, navigate over them by clicking on 'Previous' and 'Next' buttons.
+Clicking on the Like (heart) icon will open a Like modal, listing users who already liked the post:
+![Like modal](/screenshots/duckpond-feed-4.jpg?raw=true "Like modal")
+If there are more than five likes for the given post, navigate over them by clicking on 'Previous' and 'Next' buttons.
+* To look up anybody's profile on the network, click on Search in the navigation bar on the left and type the name of the account you are looking for:
+![Search page](/screenshots/duckpond-search-1.jpg?raw=true "Search page")
+Clicking on any user will open their profile modal:
+![Search page - Profile](/screenshots/duckpond-search-2.jpg?raw=true "Search page - Profile")
+* To write a new post and share it, on the Post page, write some text and click 'Share'. You should see a confirmation message indicating successful new post has been shared:
+![New post made](/screenshots/duckpond-createpost-2.jpg?raw=true "New post made")
+* Profile page shows your account information alongside your profile picture and a list of all the posts you so far shared on DuckPond:
+![Profile page](/screenshots/duckpond-profile-1.jpg?raw=true "Profile page")
+If you want to change any of your public profile information, click on the Edit icon at the bottom of the upper profile container. This will open text entry fields for editing data. Clicking on 'Save' will update your profile with new information you entered:
+![Profile page - Update](/screenshots/duckpond-profile-3.jpg?raw=true "Profile page - Update")
+By clicking on 'Change profile photo...' button you can update your profile picture:
+![Profile page - Update Picture](/screenshots/duckpond-profile-5.jpg?raw=true "Profile page - Update Picture")
+If there are more than five posts on your profile page, navigate over them by clicking on 'Previous' and 'Next' buttons.
+* On the Settings page, you can toggle between light and dark mode for the website by toggling 'Dark Mode':
+![Settings - Light Mode](/screenshots/duckpond-settings-1.jpg?raw=true "Settings - Light Mode")
+To sign out, click on the yellow 'Sign Out' button below.
+To delete your account (warning: this will delete all data associated with your profile, including posts, comments, likes, etc.), click the red 'Delete Account' button. You should see a warning message before proceeding with account removal:
+![Delete Account](/screenshots/duckpond-settings-2.jpg?raw=true "Delete Account")
