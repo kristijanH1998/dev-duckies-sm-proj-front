@@ -5,7 +5,9 @@ DuckPond - internship group project for Bay Valley Tech
 - [Description](#description)
 - [How to Run the Project](#how-to-run-the-project)
 - [How to Use the Project](#how-to-use-the-project)
-- [Developer Log, Wireframe](#developer-log-wireframe)
+- [Tests](#tests)
+- [Developer Log, Flowcharts, Wireframe, Screenshots](#developer-log-flowcharts-wireframe-screenshots)
+- [Credits](#credits)
 
 ## Description
 #### Overview and Technologies used
@@ -97,3 +99,25 @@ If there are more than five posts on your profile page, navigate over them by cl
 To sign out, click on the yellow 'Sign Out' button below.
 To delete your account (warning: this will delete all data associated with your profile, including posts, comments, likes, etc.), click the red 'Delete Account' button. You should see a warning message before proceeding with account removal:
 ![Delete Account](/screenshots/duckpond-settings-2.jpg?raw=true "Delete Account")
+
+## Tests
+* At the initial stages of development, we used Insomnia and Postman to test API endpoints for all HTTP methods (GET, POST, PUT, and DELETE) that are used for communication with the backend server
+* Due to problems with automating tests in both Insomnia and Postman, the team decided to make our own automated testing program in Python. This program, when run, activates all the endpoints on the server and sends requests for communication with the database for each of them. If all tests run successfully, it means the backend part of DuckPond is fully operational
+* The repository of our Python automated test tool can be found [here](https://github.com/kristijanH1998/ddsm-backend-testing-tool.git). Browse the README file for more information and screenshots of this subproject 
+
+## Developer Log, Flowcharts, Wireframe, Screenshots
+* My developer log for this project has been uploaded [here](https://drive.google.com/file/d/1bIH4XZXU69Ym8tr6hukK0defAdZk_hYE/view?usp=sharing)
+* The flowcharts I made in Whimsical for Login and Register endpoints, deleting, updating, and getting data on user's Profile page or Feed page, account deletion, and other API methods can be seen on [this link](https://whimsical.com/api-fZfurRkTG76GxAbwypZCt)
+* The wireframe schematics I made in Figma for Login and Register pages is shown [here](https://www.figma.com/design/jj1JsWoJYqUOrp8FJDnOSf/Login%2FRegister-page-wireframes?node-id=0-1&t=qn4lK3Ey3o9NGknh-1). The wireframe for the Feed and Profile pages and Post modal are uploaded [here](https://www.figma.com/design/2mC4Kt2an5EqkLJgBYSSzh/Feed%2FProfile-Page-%26-Post-Modal-Wireframes?node-id=0-1&t=bvvqA0HnTnpx0N5X-1)
+* More screenshots taken from this project can be seen on my [portfolio website](https://kristijanh1998.github.io/duckpond.html)
+
+## Credits
+* This project was sponsored and coordinated by [Bay Valley Tech (BVT) Code Academy](https://www.bayvalleytech.com/)
+* Team members who contributed to the Frontend part of DuckPond project: 
+    1. Alex Yanez [GitHub](https://github.com/A13xYanez) [LinkedIn](https://www.linkedin.com/in/a13x-yanez/)
+    2. Billy Flowers [GitHub](https://github.com/bflows) [LinkedIn](https://www.linkedin.com/in/billyflowers/)
+    3. Ephraim Winston [GitHub](https://github.com/Ephraim-Winston) [LinkedIn](https://www.linkedin.com/in/ephraim-winston-1499b51b7/)
+    4. Jeshua Cervantes [GitHub](https://github.com/JJeshua) [LinkedIn](https://www.linkedin.com/in/jeshua-cervantes/)
+    5. Jose Lema [GitHub](https://github.com/Jose-Lema) [LinkedIn](https://www.linkedin.com/in/joseantoniolema/)
+    6. Kristijan Hornung [GitHub](https://github.com/kristijanH1998) [LinkedIn](https://www.linkedin.com/in/kristijan-hornung-56440622a/)
+    7. Victor Lomeli-Ponce [GitHub](https://github.com/vlomeli) [LinkedIn](https://www.linkedin.com/in/vlomeliponce/)
