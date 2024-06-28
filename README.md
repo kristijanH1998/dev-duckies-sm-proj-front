@@ -28,7 +28,7 @@ DuckPond - internship group project for Bay Valley Tech
 * Hackolade was employed for making data models, Entity Relationship (ER) diagrams, and schema designs for collections and documents of our MongoDB database
 * To connect frontend layer of the application to backend logic, we utilized Axios API for sending HTTP requests to the backend server
 * Font Awesome toolkit was used for fonts and icons on the application's website (frontend)
-* The repository of the frontend part of the project can be found [here](https://github.com/kristijanH1998/dev-duckies-sm-proj-front.git)      
+* The repository of the backend part of the project can be found [here](https://github.com/kristijanH1998/ddsm-back-end.git)      
 * An extra step that has also been taken was containerization of the project with Docker, to achieve OS-level virtualization and make it easier for end users to test DuckPond without having to install a lot of environment dependencies, packages, libraries, etc.
 
 #### Challenges faced during development
