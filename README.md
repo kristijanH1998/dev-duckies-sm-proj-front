@@ -13,7 +13,7 @@ DuckPond - internship group project for Bay Valley Tech
 #### Overview and Technologies used
 * Full-Stack social network application modeled on existing platforms like Twitter and Instagram
 * DuckPond is an example of a 3-tier MERN (MongoDB, Express, React, Node.js) full-stack architecture 
-* This repository stores backend server-side logic and database access code for the DuckPond project
+* This repository stores frontend code for the DuckPond project 
 * Users can create new accounts on DuckPond, and sign in at any time with valid credentials. 
 * Every user has a Profile which they can update at any time with new personal information, such as a profile image, biography, country of residence, etc.
 * The main page of DuckPond is a Feed page that holds all the active posts from all users who are registered to the social network. Feed page provides all the typical social media features, from liking and commenting on other people's posts, to deleting or editing one's own posts (not those from other users however)
